@@ -1,0 +1,1 @@
+- [高可用数据库类型的介绍与优缺点：](https://www.cnblogs.com/devinzhang/p/7001424.html)
