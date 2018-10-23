@@ -1,4 +1,4 @@
-真正的inotify+rsync实时同步
+真正的inotify+rsync实时同步(这边文章挺不错的)
 https://www.cnblogs.com/jackyyou/p/5681126.html
 
 
