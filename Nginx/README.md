@@ -4,3 +4,11 @@
 - Nginx的局限
 
 ### 2.2
+
+
+Nginx 重启命令
+
+centos
+
+
+Ubuntu
