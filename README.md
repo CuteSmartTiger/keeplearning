@@ -2,8 +2,8 @@
 
 #### Python
     - videos
-        
-        
+
+
     - book
         - fluent Python
         - Python cookbook
