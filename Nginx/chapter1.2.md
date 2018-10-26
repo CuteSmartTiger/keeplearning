@@ -41,8 +41,8 @@ sudo apt-get update
 [转换为Ubuntu下安装，参考文章：](https://www.cnblogs.com/wyd168/p/6636529.html)
 
 ```
-apt-get install build-essential
-apt-get install libtool
+apt-get -y install build-essential
+apt-get -y install libtool
 
 查看gcc-c++包的位置：
 dpkg -L gcc-c++
