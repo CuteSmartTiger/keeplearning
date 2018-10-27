@@ -2,13 +2,23 @@
 之前两种则为tcp协议
 
 
-
-配置宿主的即DNS域名解析：
+配置客户端即DNS域名解析：
+Linux下：
 vim /etc/hosts
+
+Windows下：C:\Windows\System32\drivers\etc
+192.168.6.90 1.imooc.com
+192.168.6.90 2.imooc.com
+
 192.168.6.90 liuhu1.test.com
 192.168.6.90 liuhu2.test.com
 
+
+
 检查是否成功
+ping 1.imooc.com
+ping 2.imooc.com
+
 ping liuhu1.test.com
 ping liuhu2.test.com
 
@@ -33,6 +43,13 @@ iptables -F
 
 http://liuhu1.test.com/server.html
 
+1.imooc.com/server.html
+
 
 关闭：
 kill -9 PID号
+
+
+可以通过以下调试访问：
+curl 1.imooc.com/server.html
+curl 2.imooc.com/server.html
