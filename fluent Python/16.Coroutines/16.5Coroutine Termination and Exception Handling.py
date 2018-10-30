@@ -30,6 +30,7 @@ from inspect import getgeneratorstate
 
 print(getgeneratorstate(exc_coro))
 
+print('-----------------------分割线------------------------')
 
 # 思考：try与finally是如何解决清理的
 # 如果不管协程如何结束都想做些清理工作，要把协程定义体中相关的代
@@ -52,3 +53,14 @@ def demo_exc_handling():
                 print('-> coroutine received: {!r}'.format(x))
     finally:
         print('-> coroutine ending')
+
+
+exc_coro = demo_exc_handling()
+print(next(exc_coro))
+print(exc_coro.send(11))
+print(exc_coro.send(22))
+print(exc_coro.throw(DemoException))
+exc_coro.close()
+from inspect import getgeneratorstate
+
+print(getgeneratorstate(exc_coro))
