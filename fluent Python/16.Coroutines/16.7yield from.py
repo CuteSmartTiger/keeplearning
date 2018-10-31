@@ -29,10 +29,11 @@ def main(data):
     results = {}
     for key, values in data.items():
         group = grouper(results, key)
+        # 预激活
         next(group)
         for value in values:
             group.send(value)
-        group.send(None)  # 重要！
+        group.send(None)  # 重要
     print(results)  # 如果要调试，去掉注释
     report(results)
 
