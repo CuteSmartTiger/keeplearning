@@ -48,16 +48,17 @@ compress：默认不压缩；
 vim /etc/logrotate.d/file
 
 /vsr/log/file.log{
- daily                日志文件按每个月轮循 daily 每天 weakly 每星期 yealy 每年
- rotate 5               储存5个归档日志，对于第六个归档，时间最久的自动删除
- compress               以归档的文件用gzip进行压缩
+daily                日志文件按每个月轮循 daily 每天 weakly 每星期 yealy 每年
+rotate 5               储存5个归档日志，对于第六个归档，时间最久的自动删除
+compress               以归档的文件用gzip进行压缩
 mail address           把转储的日志文件发送到指定的E-mail 地址
 nocompress              不需要压缩时，用这个参数
 copytruncate            用于还在打开中的日志文件，把当前日志备份并截断
 nocopytruncate          备份日志文件但是不截断
 create 644 root root    转储文件，使用指定的文件模式创建新的日志文件
- size 20M               指定文件当天达到20M的时候才转储，可以设置为10K
- dateext                文件后加上当前日期
+size 20M               指定文件当天达到20M的时候才转储，可以设置为10K
+dateext                文件后加上当前日期
+su root root
  }
 以上的参数可以根据自己的需求而添加
 ```
