@@ -20,7 +20,7 @@ def averager():
 
 # 委派生成器
 def grouper(results, key):
-    while True:
+    while True: 
         results[key] = yield from averager()
 
 
