@@ -31,5 +31,5 @@ def main_func():
 # 以上解释：
 # 1.main_func为调用方
 # 2.tes1为委托生成器
-# 3.gen为自生成器
+# 3.gen为子生成器
 # yield from 会在调用方与生成器之间建立一个双向通道
