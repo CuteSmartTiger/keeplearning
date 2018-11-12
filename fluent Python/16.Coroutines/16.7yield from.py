@@ -40,6 +40,7 @@ def main(data):
 
 # 输出报告
 def report(results):
+    print(results.items())
     for key, result in sorted(results.items()):
         group, unit = key.split(';')
         print('{:2} {:5} averaging {:.2f}{}'.format(result.count, group, result.average, unit))
