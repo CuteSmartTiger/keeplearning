@@ -1,6 +1,10 @@
 # Python为了语义更加明确，以便区分协程与生成器，引入
 # async与await关键词用于定于原生的协程
 
+# 从Python 3.5开始引入了新的语法async和await
+# async和await是针对coroutine的新语法，要使用新的语法，只需要做两步简单的替换：
+# 把@asyncio.coroutine替换为async；
+# 把yield from替换为await。
 
 async def download(url):
     return 'nice'
