@@ -129,3 +129,9 @@ $ cat logrotate.conf
     rotate 4        
     compress
 }
+
+
+- Ignoring mosquitto because of bad filemode.
+日志的配置权限必须为：
+-rw-r--r--
+修改为其他的，比如-rwxrwxrwx，虽然你放开了权限，但是logrotate不认，出现报错：Ignoring mosquitto because of bad filemode
