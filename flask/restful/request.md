@@ -24,3 +24,6 @@ files
 一个包含 POST 和 PUT 请求中上传的文件的 MultiDict 。每个文件存储为 FileStorage 对象。其基本的行为类似你在 Python 中见到的标准文件对象，差异在于这个对象有一个 save() 方法可以把文件存储到文件系统上。
 
 ```
+
+[request模块属性](https://www.cnblogs.com/wangjikun/p/6935592.html)
+[flask框架介绍中文版](http://docs.jinkan.org/docs/flask/quickstart.html)
