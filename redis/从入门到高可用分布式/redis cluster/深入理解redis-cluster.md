@@ -47,6 +47,7 @@ cat redis-7006.conf
 redis-server redis-7006.conf
 redis-server redis-7007.conf
 
+
 meet操作
 redis-cli -p 7000 cluster meet 127.0.0.1 7006
 redis-cli -p 7000 cluster nodes
@@ -58,4 +59,57 @@ redis-cli -p 7000 cluster nodes
 redis-cli -p 7007 cluster replicate node_id
 
 
+
+集群扩容
+src目录下
+旧版本命令
+./redis-trib.rb reshard 127.0.0.1:7000
+
+新版本命令：
+redis-cli --cluster reshard 127.0.0.1:7000
+4096
+7006_node_id
+all
+yes
+
+查看迁移情况
+redis-cli -p 7000 cluster slots
+
+redis-cli -p 7000 cluster nodes | grep master
+
 #### 缩容集群
+- 先迁移槽
+ps -ef | grep redis-server | grep 700
+redis-cli -p 7000 cluster nodes
+
+先迁移槽
+老版本
+src目录下：
+./redis-trib.rb reshared --from 7006_node_id --to 7000_node_id --slots 1366 127.0.0.1:7006
+yes
+
+新版本：
+redis-cli --cluster reshard  --cluster-from 7006_node_id  --cluster-to  7000_node_id --cluster-slots  1366 127.0.0.1:7006
+
+redis-cli -p 7000 cluster nodes
+
+redis-cli --cluster reshard  --cluster-from 7006_node_id  --cluster-to  7001_node_id --cluster-slots  1366 127.0.0.1:7006
+
+redis-cli -p 7000 cluster nodes
+
+redis-cli --cluster reshard  --cluster-from 7006_node_id  --cluster-to  7002_node_id --cluster-slots  1366 127.0.0.1:7006
+
+- 然后删除节点
+先下从节点再下主节点
+老版本：
+./redis-trib.rb del-node 127.0.0.1:7000 7007_node_id
+
+新版本：
+删除从节点
+redis-cli --cluster del-node 127.0.0.1:7000 7007_node_id
+
+查看是否存在
+redis-cli -p 7007
+
+删除主节点
+redis-cli --cluster del-node 127.0.0.1:7000 7006_node_id
