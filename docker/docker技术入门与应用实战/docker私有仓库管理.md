@@ -27,4 +27,11 @@ curl http://192.168.37.129:5000/v2/_catalog
 
 列出镜像标签
 curl http://192.168.37.129:5000/v2/wordpress/tags/list
+
+
+
 ```
+docker run -itd --name wordpress -p 88:80 192.168.37.129:5000/wordpress:v1
+
+
+ docker rm $(docker ps -q -a)
