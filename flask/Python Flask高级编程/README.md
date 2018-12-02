@@ -1,0 +1,16 @@
+#### 知识结构
+- RESTful API
+- 路由 视图  蓝图
+- 数据库
+- 模型 业务逻辑
+- MVC
+- 安全
+- 前后端分离
+- request请求
+- 参数验证
+- 错误日志
+- debug能力
+- redis
+- 配置文件 secure， setting， current_app
+- AppContext、RequestContext、Flask与Request之间的关系
+- flask数据库如何实现分布式
