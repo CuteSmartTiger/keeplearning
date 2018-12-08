@@ -20,6 +20,14 @@ log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 
 
+参数解释如下:
+auto_increment_offset表示自增长字段从哪个数开始，指字段一次递增多少，他的取值范围是1 .. 65535
+auto_increment_increment表示自增长字段每次递增的量，指自增字段的起始值，其默认值是1，取值范围是1 .. 65535
+
+为了避免两台服务器同时做更新时自增长字段的值之间发生冲突。一般在主主同步配置时，需要将两台服务器的auto_increment_increment增长量都配置为2，
+而要把auto_increment_offset分别配置为1和2.
+
+
 
 server-id = 1
 log-bin = mysql-bin

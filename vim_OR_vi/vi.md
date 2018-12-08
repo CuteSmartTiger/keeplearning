@@ -144,8 +144,8 @@ J            清除光标所处的行与上一行之间的空格，把光标行�
 
 
 vim 不好方便编辑
-一.执行命令 sudoapt-get remove vim-common（该命令可以不执行）
-二.执行命令 sudoapt-get install vim
+一.执行命令 sudo apt-get remove vim-common（该命令可以不执行）
+二.执行命令 sudo apt-get install vim
 
 
 - 改注释的颜色

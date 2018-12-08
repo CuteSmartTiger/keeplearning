@@ -1,4 +1,5 @@
-[参数解析](http://www.pythondoc.com/Flask-RESTful/quickstart.html)
+#### 极力推荐
+- [Flask-RESTful ](https://flask-restful.readthedocs.io/en/latest/)
 
 
 - 基本格式
@@ -12,7 +13,11 @@ parser.add_argument('rate', type=int, help='Rate cannot be converted')
 parser.add_argument('name', type=str)
 args = parser.parse_args()
 
+注意：当参数类型是列表时，只能解析出第一个索引值，比如
+{u'package_id': 5, u'vms': [75, 15, 2]}
+解析后为：:MultiDict([(u'package_id', 5), (u'vms', 75), (u'vms', 15), (u'vms', 2)])
 
+原因为reqparse.resource方法中的values.update(value)，iter_multi_items
 ```
 
 - [reqparse模块](http://www.pythondoc.com/Flask-RESTful/api.html#module-reqparse)
