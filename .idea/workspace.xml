@@ -17,11 +17,11 @@
     <session id="898299686">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.0" value="1" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -76,8 +76,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-194" />
-    <option name="y" value="73" />
+    <option name="x" value="7" />
+    <option name="y" value="48" />
     <option name="width" value="1911" />
     <option name="height" value="984" />
   </component>
@@ -213,9 +213,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-129" y="49" width="1274" height="656" extended-state="0" />
+    <frame x="5" y="32" width="1274" height="656" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15707237" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15953948" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
