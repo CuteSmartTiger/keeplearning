@@ -1,4 +1,5 @@
-# 整个流程无锁，由一个线程执行，produce和consumer协作完成任务，所以称为“协程”，而非线程的抢占式多任务。
+# 整个流程无锁，由一个线程执行，produce和consumer协作完成任务，
+# 所以称为“协程”，而非线程的抢占式多任务。
 def consumer():
     r = ''
     while True:
