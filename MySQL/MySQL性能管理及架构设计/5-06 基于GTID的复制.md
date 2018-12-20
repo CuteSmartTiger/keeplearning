@@ -51,14 +51,29 @@ master_auto_position =1;
 主服务器
 初始化数据库并配置触发器
 (数据库的版本尽可能一样)
-mysqldump  --single-transaction --master-data=2 --trigger --routines --all-databases -uroot -p > all2.sql
+mysqldump  --single-transaction --master-data=2 --trigger --routines --all-databases -uroot -p > a87.sql
 
-将文件复制从服务器
+将生成的数据库文件从容器复制到宿主机上的指定位置
+docker cp 42cbb4ba3f2d9f217611192f81166b236df794d889ca6154a22497383cf60144:/a87.sql /var/
+
+在主服务器上将文件复制从服务器
 scp all2.sql root@192.168.3.101:/root
 
+
+在87主服务器上操作
+scp /var/a87.sql root@192.168.6.88:/var
+
+将宿主机的文件复制到容器里
+docker cp /var/a87.sql  42cbb4ba3f2d9f217611192f81166b236df794d889ca6154a22497383cf60144:/
+
+
+优化方向：复制文件时可以把文件复制到宿主机与容器之间自动同步的文件下
+
+在88从服务器上
 初始化数据库
 mysql -uroot -p < all2.sql
 
+mysql -uroot -p < a87.sql
 
 
 
