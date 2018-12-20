@@ -2,6 +2,7 @@
 import socket
 from urllib.parse import urlparse
 
+# 本节内容与非阻塞IO模拟HTTP请求的方法作为对比
 
 def get_url(url):
     #通过socket请求html
