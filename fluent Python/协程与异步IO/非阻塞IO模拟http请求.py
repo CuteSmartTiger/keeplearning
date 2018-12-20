@@ -7,8 +7,10 @@
 import socket
 from urllib.parse import urlparse
 
-
+# 本节内容为了说明;
 # 使用非阻塞io完成http请求
+# 虽然使用了非阻塞IO，但是内部的循环
+# 依然占用很多时间，并没有提高并发
 
 def get_url(url):
     # 通过socket请求html
@@ -32,7 +34,9 @@ def get_url(url):
 
     while True:
         try:
+            # 尝试发送数据，一旦connect连接成功则才能发送成功
             client.send("GET {} HTTP/1.1\r\nHost:{}\r\nConnection:close\r\n\r\n".format(path, host).encode("utf8"))
+            # 若成功发送数据则跳出循环
             break
         except OSError as e:
             pass
@@ -46,6 +50,7 @@ def get_url(url):
         if d:
             data += d
         else:
+            # 持续获取数据直到获取不到为止
             break
 
     data = data.decode("utf8")
