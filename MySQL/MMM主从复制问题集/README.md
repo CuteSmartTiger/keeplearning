@@ -1,0 +1,1 @@
+- [MySQL主从同步故障－Slave_SQL_Running: No](https://www.linuxidc.com/Linux/2014-02/96945.htm)
