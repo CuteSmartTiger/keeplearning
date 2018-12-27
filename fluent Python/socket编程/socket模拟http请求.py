@@ -16,8 +16,9 @@ def get_url(url):
     # client.setblocking(False)
     client.connect((host, 80))  # 阻塞不会消耗cpu
 
-    # 不停的询问连接是否建立好， 需要while循环不停的去检查状态
-    # 做计算任务或者再次发起其他的连接请求
+    # 不停的询问连接是否建立好， 需要while循环不
+    # 停的去检查状态,而檢查狀態是消耗CPU的， 所以
+    # 還不如去做计算任务或者再次发起其他的连接请求
 
     client.send("GET {} HTTP/1.1\r\nHost:{}\r\nConnection:close\r\n\r\n".format(path, host).encode("utf8"))
 
