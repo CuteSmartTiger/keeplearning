@@ -1,4 +1,9 @@
-man 的用法？
+#### 优秀的博客网址
+- [日志切割](https://www.cnblogs.com/clsn/p/8428257.html#auto_id_3)
+
+
+
+
 
 - [日志管理工具Logrotate](https://www.cnblogs.com/futeng/p/4785206.html)
 

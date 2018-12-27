@@ -39,10 +39,10 @@ auto_increment_increment = 2
 
 参考文章地址：https://www.cnblogs.com/phpstudy2015-6/p/6485819.html#_label7
 mysql-B配置文件：
-server-id = 2
+server_id = 2
 auto_increment_offset = 2
 auto_increment_increment = 2
-log-bin = mysql-bin
+log_bin = mysql-bin
 
 
 
