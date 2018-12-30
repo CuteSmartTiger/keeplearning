@@ -1,0 +1,67 @@
+#!/bin/bash   
+#ip addr | grep 'global eth0' | awk 'BEGIN {count=0;print count} {count=count+1;print $2} END {print count}'
+
+
+# 获取ip的个数并输出
+ip_nums=$(echo ` ip addr | grep 'global eth0' | awk 'BEGIN {count=0;} {count=count+1;} END {print count}'`)
+echo ${ip_nums}
+
+
+if [ "${ip_nums}" == "1" ];
+then
+    file=/opt/float
+    if [ ! -f "$file" ]; then
+        touch "$file"  
+    fi
+    echo 0 > $file
+
+    #value = $(echo ` cat /opt/float`)
+    #echo ${value}
+    #if [ "${vale}" == "8"];then
+    #    echo 'reset tag'
+    #    echo 0 > ${file}
+    #    exit 0
+    #fi
+
+    #监控desktop
+    if [ "$(ps -ef | grep "desktop" | grep -v grep)" == "" ]
+    then
+        echo "died container"
+        exit 0
+    else
+        #杀死desktop容器
+        docker kill vdidesktop-desktop
+        echo 'kill container'
+        exit 0
+    fi
+fi
+
+if [ "${ip_nums}" == "2" ]
+then
+    #判断desktop是否启动
+    if [ "$(ps -ef | grep "desktop" | grep -v grep)" == "" ]
+    then
+        #如果是第一次漂移则启动容器,则设置初始值0，如果不是则返回数字表示容器异常
+        file=/opt/float
+        if [ ! -f "$file" ]; then
+           touch "$file"
+           echo 0 > $file
+        fi
+
+        #如果file内容为0则代表刚飘逸过来，若为1则表示不是刚飘过来
+        value=$(echo `cat /opt/float | awk '{print $1 }'`)
+        echo ${value}
+        if [ "${value}" == 0 ]
+        then
+            `docker start vdidesktop-desktop`
+            echo 8 > '/opt/float'
+            exit 0
+        else
+            echo "vdidesktop stop" >> /var/log/messages
+            exit 4
+        fi
+    else
+        echo 'container alive'
+        exit 0
+    fi
+fi

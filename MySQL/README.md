@@ -3,3 +3,8 @@
 
 
 - [MySQL高可用架构之MHA](https://www.cnblogs.com/gomysql/p/3675429.html)
+
+
+
+
+- [MySQL配置文件my.cnf的理解](https://www.cnblogs.com/langdashu/p/5889352.html)
