@@ -1,0 +1,60 @@
+
+<!doctype html>
+<html>
+<head>
+    <title>Long Pooling</title>
+    <style>
+        #main {
+          position: absolute;
+          bottom: 50px;
+          left: 200px;
+        }
+        #state{
+            float:right;
+            width:400px;
+        }
+    </style>
+<head>
+<body>
+    <div id="main">
+        <div id="inbox"></div>
+    </div>
+    <div id="state"></div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+    var id = null;
+
+    function longPolling() {
+        $.ajax({
+            url: "update",
+            data: {"id": id},
+            type: "POST",
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                $("#state").append("[state: " + textStatus + ", error: " + errorThrown + " ]<br/>");
+            },
+            success: function (result, textStatus) {
+                console.log(result)
+                msg_data = eval("(" + result + ")");
+                $("#inbox").append(msg_data.html);
+                id = msg_data.id;
+                console.log(msg_data)
+                $("#message").val("");
+                $("#state").append("[state: " + textStatus + " ]<br/>");
+            },
+            complete: longPolling
+        });
+    }
+
+    function sendNewMessage() {
+        $.ajax({
+            type: "POST",
+            url: "new",
+        });
+    }
+
+    $(function(){
+        longPolling();
+    })
+    </script>
+</body>
+</html>
