@@ -13,7 +13,7 @@ gevent是一个著名的开发框架。通过本课程可以学习到gevent的�
 10.greenlets互相通信之Queue
 11.如何管理多个Greenelet
 12.greenlet间同步方法：信号量
-13.gevent中使用子进程14:33
+13.gevent中使用子进程
 14.gevent如何使用monkey patch
 15.gevent.server使用
 16.gevent.WSGIServer使用
@@ -25,4 +25,4 @@ gevent是一个著名的开发框架。通过本课程可以学习到gevent的�
 22.gevent源码分析之hub
 23.gevent源码分析之socket
 24.gevent源码分析之server
-25.gevent总结15:13
+25.gevent总结
