@@ -3,8 +3,6 @@ sudo apt-get update
 apt-get install logrotate cron
 
 
-
-
 ###备份、压缩或转储
 
 
