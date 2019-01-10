@@ -33,7 +33,7 @@ server-id = 1
 log-bin = mysql-bin
 auto_increment_offset = 1
 auto_increment_increment = 2
-
+binlog_format=MIXED
 
 
 
@@ -43,20 +43,21 @@ server_id = 2
 auto_increment_offset = 2
 auto_increment_increment = 2
 log_bin = mysql-bin
-
+binlog_format=MIXED
 
 
 在192.168.6.90上执行mysql语句：
 stop slave;
-GRANT REPLICATION SLAVE ON *.* TO 'root'@'192.168.6.49' IDENTIFIED BY '123123';
+GRANT REPLICATION SLAVE ON *.* TO 'root'@'192.168.6.92' IDENTIFIED BY '123123';
 FLUSH PRIVILEGES;
+FLUSH LOGS;
 
 然后数据库中查看二进制文件与位置：
 多次执行这个命令，确认输出信息不发生变化
 show master status;
 
 在192.168.6.49中执行：
-CHANGE MASTER TO MASTER_HOST='192.168.6.90',MASTER_USER='root',MASTER_PASSWORD='123123',MASTER_LOG_FILE='mysql-bin.000001',MASTER_LOG_POS=345;
+CHANGE MASTER TO MASTER_HOST='192.168.6.92',MASTER_USER='root',MASTER_PASSWORD='123123',MASTER_LOG_FILE='mysql-bin.000005',MASTER_LOG_POS=107;
 
 start slave;
 SHOW SLAVE STATUS\G
