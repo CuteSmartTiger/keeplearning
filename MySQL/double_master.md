@@ -30,9 +30,9 @@ auto_increment_increment表示自增长字段每次递增的量，指自增字�
 
 
 server-id = 1
-log-bin = mysql-bin
 auto_increment_offset = 1
 auto_increment_increment = 2
+log-bin = mysql-bin
 binlog_format=MIXED
 
 
