@@ -4,3 +4,7 @@ docker run -d -v /opt/registry:/var/lib/registry -p 5000:5000 --restart=always -
 
 查看仓库里的镜像
 curl http://192.168.37.129:5000/v2/_catalog
+
+
+
+curl http://192.168.5.8:5001/v2/_catalog
