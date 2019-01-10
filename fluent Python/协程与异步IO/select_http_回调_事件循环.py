@@ -95,7 +95,7 @@ if __name__ == "__main__":
     import time
 
     start_time = time.time()
-    for url in range(20):
+    for url in range(30):
         # url = "http://shop.projectsedu.com/goods/{}/".format(url)
         url = "http://www.baidu.com/"
         urls.append(url)
