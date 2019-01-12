@@ -1,0 +1,21 @@
+课程目录』:
+1.Rabbimq必备基础之对高级消息队列协议AMQP分析及Rabbitmq本质介绍
+2.步入Rabbitmq之教你如何在windows和CentOS上进行环境安装和使用
+3.rabbitmqctl在application,cluster,UserManage,AccessControl方面的使用认知介绍
+4.配置文件之使用rabbitmq-env.conf,rabbitmq.config在生产环境的应用和和一些注意的问题
+5.使用C#驱动(RabbitMQ.Client)构造我们的第一个Publish和Consumer应用
+6.使用direct exchange实现如何使用多台consumer通过轮询的方式分摊queue中的消息和实际应用场景6
+7.日志记录场景分析之如何使用将routingkey绑定到各自的queue来实现实际场景的按需定制
+8.CRM客户关怀和千人千面场景应用之使用Fanout Exchange来实现此类多播处理需求
+9.Headers Exchange介绍之通过x-match来实现对Queue的And,Or条件的精准匹配
+10.Topic Exchange之使用正则表达式对Routingkey进行分组归类的使用和配置
+11.Rabbitmq层面上实现RPC调用原理大图以及通过SimpleRpcClient,RpcServer高级封装类实战
+12.Queue,Exchange特性之QueueDeclare方法和参数[passive,durable,exclusive,autodelete]使用和分析
+13.Queue Arguments特性之Queue,MessageTTL,MaxLength,Bytes实现Cache,队列长度和大小限制
+14.Queue Arguments特性之DeadLetterExchange,DeadLetterRouintKey,Priority实现队列的死信处理和优先级实战
+15.Message级别控制之金融系AMQP的消息确认机制[txSelect,TxCommit...]和发布确认机制[Ack,Reject...]详细讲解
+16.Message级别控制之BasicProperties分析和Lazy Queue,Message Persistent策略使用
+17.三大Consume消费模式【EventingBasic,QueueingBasicConsumer,BasicGet】分析模式以及需要注意的坑
+18.Rabbitmq运维操作之使用三台CentOS搭建一个高可用的Rabbitmq集群
+19.Rabbitmq运维化之使用mirror queue在Cluster上做同步Queue的同步复制+C#连接操作
+20.Rabbimq运维化之使用四层负载均衡器HaProxy+Cluster+MirrorQueue构建三高架构
