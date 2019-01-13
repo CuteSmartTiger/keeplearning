@@ -2,14 +2,14 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/1/12 19:12
 # @Author  : liuhu
-# @Site    : 
+# @Site    :
 # @File    : 05一个队列绑定多个关键字之rabbitmq_produce.py
 # @Software: PyCharm
 # @github  :https://github.com/Max-Liuhu
 
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-__author__ = 'WangQiaomei'
+__author__ = ''
 
 import pika
 import sys
@@ -21,7 +21,7 @@ import sys
 '''
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-        host='192.168.37.134'))
+    host='192.168.37.134'))
 channel = connection.channel()
 
 channel.exchange_declare(exchange='direct_logs',
@@ -35,4 +35,3 @@ channel.basic_publish(exchange='direct_logs',
                       body=message)
 print(" [x] Sent %r:%r" % (severity, message))
 connection.close()
-
