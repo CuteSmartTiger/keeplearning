@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		window.onload = function(){
+
+			var oBtn = document.getElementById('btn01');
+
+			// 将事件属性和一个函数关联，函数不能写小括号，写了会马上执行
+			oBtn.onclick = fnChange;
+
+			function fnChange(){
+				var oDiv = document.getElementById('div1');
+				oDiv.style.color = "red";
+				oDiv.style.fontSize = "30px";
+			}
+
+
+		}
+	</script>
+</head>
+<body>
+	<!-- 标签内调用   -->
+	<div id="div1">这是一个div元素</div>
+	<input type="button" name="" value="改变div" id="btn01">
+</body>
+</html>
