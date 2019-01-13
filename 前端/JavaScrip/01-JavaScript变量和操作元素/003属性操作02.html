@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var sMystyle = 'fontSize';
+			var sValue = '30px';
+			/*	
+				这一句没有作用：变量sMystyle被认为是一个属性
+				oDiv.style.sMystyle = sValue;
+			*/
+
+			/* 
+				属性用变量来代替的话需要用[]来操作
+
+			 */
+			oDiv.style[sMystyle] = sValue;
+		}
+
+	</script>
+</head>
+<body>
+	<div id="div1">这是一个div元素</div>
+</body>
+</html>
