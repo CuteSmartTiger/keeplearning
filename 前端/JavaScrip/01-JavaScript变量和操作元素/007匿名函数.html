@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		window.onload = function(){
+
+			var oBtn = document.getElementById('btn01');
+
+			/*
+			oBtn.onclick = fnChange;
+
+			function fnChange(){
+				var oDiv = document.getElementById('div1');
+				oDiv.style.color = "red";
+				oDiv.style.fontSize = "30px";
+			}			
+			转化成匿名函数的写法：
+			*/
+
+			oBtn.onclick = function(){
+				var oDiv = document.getElementById('div1');
+				oDiv.style.color = "red";
+				oDiv.style.fontSize = "30px";
+			};
+
+
+		}
+	</script>
+</head>
+<body>
+	
+	<div id="div1">这是一个div元素</div>
+	<input type="button" name="" value="改变div" id="btn01">
+</body>
+</html>
