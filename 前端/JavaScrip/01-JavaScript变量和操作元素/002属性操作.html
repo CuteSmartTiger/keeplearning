@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var oA = document.getElementById('link');
+			var oDiv2 = document.getElementById('div2');
+
+			// 读取属性
+			var sId = oDiv.id
+			alert(sId);
+
+			
+			// 写属性
+			oDiv.style.color = "red";
+			oA.href = "http://www.baidu.com";
+			oA.title = "这是去到百度网的链接";
+
+
+			// 操作class属性需要写成 className
+			oDiv2.className = "box2";
+		}
+
+	</script>
+
+	<style type="text/css">
+		
+		.box{
+			font-size:20px;
+			color:gold;
+		}
+
+		.box2{
+			font-size:30px;
+			color:pink;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="div1">这是一个div元素</div>
+	<a href="#" id="link">这个一个链接</a>
+
+	<div class="box" id="div2">这是第二个div</div>
+</body>
+</html>
