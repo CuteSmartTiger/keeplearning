@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		
+		window.onload = function(){
+
+			var oDiv = document.getElementById('div1');
+
+			// 读取元素里面的内容
+			var sTr = oDiv.innerHTML;
+			alert(sTr);
+
+			// 写元素里面的内容
+			//oDiv.innerHTML = "修改的文字";
+			oDiv.innerHTML = "<a href='http://www.itcast.cn'>传智播客</a>"
+
+		}
+
+
+	</script>
+</head>
+<body>
+	<div id="div1">这是一个div元素</div>
+</body>
+</html>
