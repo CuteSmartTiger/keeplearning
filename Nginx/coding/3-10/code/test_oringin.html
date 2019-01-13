@@ -1,0 +1,24 @@
+<html lang="en">  
+<head>  
+<meta charset="UTF-8" />  
+<title>测试ajax和跨域访问</title>  
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>  
+</head>  
+<script type="text/javascript">  
+$(document).ready(function(){  
+    $.ajax({  
+        type: "GET",  
+        url: "http://jeson.imoocc.com/1.html",  
+        success: function(data) {   
+            alert("sucess!!!");  
+        },  
+        error: function() {  
+            alert("fail!!!,请刷新再试!");  
+        }  
+    });  
+});  
+</script>  
+<body>  
+     <h1>测试跨域访问</h1>
+</body>  
+</html>  

@@ -1,0 +1,26 @@
+<html lang="en">  
+<head>  
+<meta charset="UTF-8" />  
+<title>测试ajax和跨域访问</title>  
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>  
+</head>  
+<script type="text/javascript">  
+$(document).ready(function(){  
+    $.ajax({  
+        type: "GET",  
+        url: "http://jeson.t.imooc.io/java_test.jsp",
+        success: function(data) {
+            $("#get_data").html(data)
+        },
+        error: function() {  
+            alert("fail!!!,请刷新再试!");  
+        }  
+    });  
+});  
+</script>  
+<body>  
+    <h1>测试动静分离</h1>
+    <img src="http://jeson.t.imooc.io/img/nginx.png"/>
+    <div id="get_data"><div>
+</body>
+</html>  
