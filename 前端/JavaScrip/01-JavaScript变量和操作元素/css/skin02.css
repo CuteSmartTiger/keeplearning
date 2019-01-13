@@ -1,0 +1,11 @@
+body{
+	background-color:#ddd;
+}
+
+input{
+	width:200px;
+	height:50px;
+	border-radius:25px;
+	background-color:pink;
+	border:0;
+}
