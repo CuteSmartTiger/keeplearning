@@ -29,3 +29,7 @@ var/log/mysql/.log {
 }
 
 依次配置其他
+
+
+
+-v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx
