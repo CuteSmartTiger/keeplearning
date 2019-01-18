@@ -114,9 +114,9 @@ endif
 
 run-console:
 ifdef TAG
-	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro -v /var/log/vdidesktop/vdidesktop:/var/log --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):$(TAG) /bin/bash
+	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro  --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):$(TAG) /bin/bash
 else
-	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro -v /var/log/vdidesktop/vdidesktop:/var/log --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):active /bin/bash
+	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro  --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):active /bin/bash
 endif
 
 start: novnc-start etcd-start
