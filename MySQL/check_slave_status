@@ -1,0 +1,33 @@
+#!/bin/bash
+#Check MySQL Slave's Runnning Status
+
+GetMysqlSlaveStatus()
+{
+  STATUS=$(/usr/bin/mysql -uroot -p123123 -S /var/lib/mysql/mysql.sock -e "show slave status\G" | grep -i "running")
+  echo status: ${STATUS}
+
+  IO_env=`echo $STATUS | grep IO | awk  ' {print $2}'`
+  echo ioenv:${IO_env}
+  echo $STATUS | grep SQL
+  SQL_env=`echo $STATUS | grep SQL | awk  '{print $4}'`
+  echo sqlenv:${SQL_env}
+
+  if [ "$IO_env" = "Yes" -a "$SQL_env" = "Yes" ]
+  then
+      echo "MySQL Slave is running!"
+      sleep 2
+  elif [ "$IO_env" = "Connecting" -a "$SQL_env" = "Yes" ]
+  then
+      echo 'Connecting'
+      sleep 2
+  else
+      echo "mysql SLAVE IS NOT RUNNING"
+      pkill mysqld
+      break
+  fi
+
+}
+while true
+do
+GetMysqlSlaveStatus
+done
