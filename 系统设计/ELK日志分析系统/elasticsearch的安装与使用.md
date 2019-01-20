@@ -68,8 +68,8 @@ mater-slave模式非高可用模式
     http.port: 9200
 
     # 增加新的参数，这样head插件可以访问es (5.x版本，如果没有可以自己手动加)
-    # http.cors.enabled: true
-    # http.cors.allow-origin: "*"
+    http.cors.enabled: true
+    http.cors.allow-origin: "*"
 
     #副服务器要开启
     discovery.zen.ping.multicast.enabled:false   #关闭多播
@@ -84,6 +84,15 @@ systemctl restart elasticsearch.service
 
 systemctl status elasticsearch.service
 
+
+/etc/init.d/elasticsearch start
+
+
+/etc/systemd/system.conf
+
+
+创建开机自启动服务
+# chkconfig elasticsearch on
 
 - 通过浏览器请求下9200的端口，看下是否成功
     ```
@@ -127,10 +136,35 @@ systemctl status elasticsearch.service
       }
 
     ```
-- 插件件的安装
+##### 插件件的安装
+
+- 安装elasticsearch-head插件
 ```
+安装docker镜像或者通过github下载elasticsearch-head项目都是可以的，1或者2两种方式选择一种安装使用即可
+
+1. 使用docker的集成好的elasticsearch-head
+    # docker run -p 9100:9100 mobz/elasticsearch-head:5
+
+    docker容器下载成功并启动以后，运行浏览器打开http://localhost:9100/
+
+2. 使用git安装elasticsearch-head
+    # yum install -y npm
+    # git clone git://github.com/mobz/elasticsearch-head.git
+    # cd elasticsearch-head
+    # npm install
+    # npm run start
+    检查端口是否起来
+    netstat -antp |grep 9100
+    浏览器访问测试是否正常
+    http://IP:9100/
+
+在/usr/share/elasticsearch/bin/elasticsearch-head目录下重启 npm run 可以重启head
+
+
+
+以下失效
 # 装插件来看
-/usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head # 用来看
+/usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head
 
 chown -R elasticsearch:elasticsearch /usr/share/elasticsearch/plugins
 
