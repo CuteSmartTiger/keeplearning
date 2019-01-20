@@ -1,36 +1,42 @@
 - 安装
 
+- [官网](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html)
+
+
 - 单行执行方式
+```shell
+# 软连接
+ln -s /usr/share/logstash/bin/logstash /bin/
 执行logstash的命令
-/opt/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
+logstash -e 'input { stdin { } } output { stdout {} }'
 
 
-/opt/logstash/bin/logstash -e 'input { stdin { } } output { stdout {codec => rubydebug} }'
+logstash -e 'input { stdin { } } output { stdout {codec => rubydebug} }'
 
 
 如果标准输出还有elasticsearch中都需要保留应该怎么玩，看下面
-/opt/logstash/bin/logstas -e 'input { stdin { } } output { elasticsearch { hosts => ["192.168.1.202:9200"] } stdout { codec => rubydebug }}'
+logstash -e 'input { stdin { } } output { elasticsearch { hosts => ["192.168.17.129:9200"] } stdout { codec => rubydebug }}'
 
 stdout 表示输出到屏幕可见
 
-
-- logstash的配置文件
 ```
+- logstash的配置文件
+```shell
 官方指南:
 https://www.elastic.co/guide/en/logstash/current/configuration.html
 
-创建配置文件01-logstash.conf
-# vim /etc/logstash/conf.d/01-logstash.conf
-
-文件中添加以下内容
-input { stdin { } }
-output {
-  elasticsearch { hosts => ["192.168.1.202:9200"] }
-  stdout { codec => rubydebug }
-}
-
-使用配置文件运行logstash
-/opt/logstash/bin/logstash -f /etc/logstash/conf.d/01-logstash.conf
+# 创建配置文件01-logstash.conf
+# # vim /etc/logstash/conf.d/01-logstash.conf
+# 
+# 文件中添加以下内容
+# input { stdin { } }
+# output {
+#   elasticsearch { hosts => ["192.168.1.202:9200"] }
+#   stdout { codec => rubydebug }
+# }
+#
+# 使用配置文件运行logstash
+# /opt/logstash/bin/logstash -f /etc/logstash/conf.d/01-logstash.conf
 ```
 
    - 搜索指定file
@@ -55,7 +61,7 @@ output {
 
 
     #运行logstash指定elk.conf配置文件，进行过滤匹配，末尾的&表示后台运行
-    /opt/logstash/bin/logstash -f /etc/logstash/conf.d/elk.conf &    
+    logstash -f /etc/logstash/conf.d/elk.conf &    
 
    ```
 
