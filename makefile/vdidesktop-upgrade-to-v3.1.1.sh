@@ -25,10 +25,10 @@ docker load -i novnc-websocket-3.docker
 
 mysql_map=$( echo `docker ps -a | grep mysql | grep '0.0.0.0:3306->3306/tcp'`)
 
-if [ "${mysql_map}"T == ""T ];
+if [ "${mysql_map}"T = ""T ];
 then
     is_mysql_exist=$(echo `docker ps -a | grep mysql`)
-    if [ "$(is_mysql_exist)"s = ""s ];
+    if [ "${is_mysql_exist}"s = ""s ];
     then
         echo 'there is no mysql contaniner'
     else
@@ -40,6 +40,26 @@ then
 else
     echo 'mysql port has mapped, it is OK'
 fi
+
+
+#!/bin/bash
+redis_log_file='/var/log/redis'
+if [ ! -d "${redis_log_file}" ]; then
+  is_redis_exist=$(echo `docker ps -a | grep vdidesktop-redis`)
+  if [ "${is_redis_exist}s" = "s" ];
+  then
+      echo 'there is no redis contaniner'
+  else
+      docker kill vdidesktop-redis
+      docker rm vdidesktop-redis
+      sleep 1
+      echo 'rm redis contaniner'
+  fi
+else
+  echo 'redis log directory has mapped, it is OK'
+fi
+
+
 
 
 mv /opt/docker/Makefile /opt/docker/Makefile.bak
