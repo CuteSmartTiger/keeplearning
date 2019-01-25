@@ -28,6 +28,12 @@
 | Python分布式爬虫打造搜索引擎 |   |  待学习    |      |
 | 北京大学 高级数据结构与算法 |   |  待学习    |      |
 |Vue+Django REST framework |   |  待学习    |      |
+|Elasticsearch顶尖高手系列-快速入门篇 |   |  待学习    |      |
+|Elasticsearch顶尖高手系列:高手进阶篇 |   |  待学习    |      |
+
+
+
+
 
 
 - Linux
