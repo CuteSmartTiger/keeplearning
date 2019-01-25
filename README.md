@@ -30,6 +30,8 @@
 |Vue+Django REST framework |   |  待学习    |      |
 |Elasticsearch顶尖高手系列-快速入门篇 |   |  待学习    |      |
 |Elasticsearch顶尖高手系列:高手进阶篇 |   |  待学习    |      |
+|Django Rest Framework 实战和源码剖析教程 |   |  待学习    |      |
+
 
 
 
