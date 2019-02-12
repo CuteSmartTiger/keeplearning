@@ -32,6 +32,7 @@
 |Elasticsearch顶尖高手系列:高手进阶篇 |   |  待学习    |      |
 |Django Rest Framework 实战和源码剖析教程 |   |  待学习    |      |
 
+|selenium python 自动化测试课程 |   |  待学习    |      |
 
 
 
