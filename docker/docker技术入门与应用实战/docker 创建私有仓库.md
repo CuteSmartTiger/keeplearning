@@ -1,4 +1,5 @@
-efdocker pull registry
+下载搭建私有仓库需要的镜像
+docker pull registry
 
 docker run -d -v /opt/registry:/var/lib/registry -p 5000:5000 --restart=always --name registry registry
 
