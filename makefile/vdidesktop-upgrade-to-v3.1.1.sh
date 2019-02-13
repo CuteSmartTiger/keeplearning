@@ -8,14 +8,14 @@ service cron restart
 
 # install keepalive
 dpkg -i debs/*.deb
-# cp -f conf/monitor.sh /etc/keepalived/
-# sudo chmod  a+x /etc/keepalived/monitor.sh
-# cp -f conf/keepalived.conf /etc/keepalived/
+cp -f conf/monitor.sh /etc/keepalived/
+sudo chmod  a+x /etc/keepalived/monitor.sh
+cp -f conf/keepalived.conf /etc/keepalived/
 cp -f conf/rc.local /etc/rc.local
 chmod a+x /etc/rc.local
 
 
-# 针对desktop
+# 针对desktop镜像更新的处理
 desktop_image=$( echo `ls -l vdidesktop-desktop* | awk '{ print $9 }'`)
 old_desktop_contanier=$(echo `docker ps --format "{{.Names}}" | grep vdidesktop-desktop`)
 if [ "${desktop_image}"T = ""T ];
@@ -36,7 +36,7 @@ else
 fi
 
 
-# 针对etcd
+# 针对etcd镜像更新的处理
 etcd_image=$( echo `ls -l etcd* | awk '{ print $9 }'`)
 old_etcd_contanier=$(echo `docker ps --format "{{.Names}}" | grep etcd`)
 if [ "${etcd_image}"T = ""T ];
@@ -57,7 +57,7 @@ else
 fi
 
 
-# 针对novnc
+# 针对novnc镜像更新的处理
 novnc_image=$( echo `ls -l novnc* | awk '{ print $9 }'`)
 old_novnc_contanier=$(echo `docker ps --format "{{.Names}}" | grep novnc`)
 if [ "${novnc_image}"T = ""T ];
@@ -78,13 +78,8 @@ else
 fi
 
 
-# 加载镜像
-# docker load -i vdidesktop-desktop-3.1.1.0123.docker
-# docker load -i etcd-3.1.1.docker
-# docker load -i novnc-websocket-3.docker
 
-
-# 针对数据库
+# 针对数据库容器更新的处理
 mysql_map=$( echo `docker ps -a | grep mysql | grep '0.0.0.0:3306->3306/tcp'`)
 
 if [ "${mysql_map}"T = ""T ];
@@ -95,8 +90,8 @@ then
         echo 'there is no mysql contaniner'
     else
         docker kill vdidesktop-mysql
-        docker rm vdidesktop-mysql
         sleep 1
+        docker rm vdidesktop-mysql
         echo 'rm mysql contaniner'
     fi
 else
