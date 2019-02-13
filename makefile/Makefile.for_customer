@@ -106,18 +106,20 @@ pull-all:
 run: mysql-run redis-run novnc-run
 ifdef TAG
 	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):$(TAG)
-#	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro -v /var/log/vdidesktop/vdidesktop:/var/log --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):$(TAG)
 else
 	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):active
-#	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro -v /var/log/vdidesktop/vdidesktop:/var/log --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):active
 endif
 
 run-console:
 ifdef TAG
-	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro  --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):$(TAG) /bin/bash
+	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro -v /var/log/vdidesktop/vdidesktop:/var/log --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):$(TAG) /bin/bash
 else
-	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro  --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):active /bin/bash
+	docker run -d -t --link vdidesktop-mysql --link vdidesktop-redis -v $(shell pwd)/mnt/salt/pki:/etc/salt/pki -v /var/log/vdidesktop:/var/log/vdidesktop -v /var/log/salt:/var/log/salt -v /var/log/nginx:/var/log/nginx -v $(shell pwd)/mnt/salt/cache:/var/cache/salt -v $(shell pwd)/mnt/uploads:/opt/vdidesktop/app/static/uploads -v /etc/localtime:/etc/localtime:ro -v /var/log/vdidesktop/vdidesktop:/var/log --name=$(name) -p 80:80 -p 4505:4505 -p 4506:4506 -p 8000:8000 $(image):active /bin/bash
 endif
+
+
+vdidesktop-start:
+	docker start $(name)
 
 start: novnc-start etcd-start
 	docker start $(name) || :
@@ -277,10 +279,11 @@ redis-console:
 	docker exec -it $(redis_name) /bin/bash
 
 # etcd
-
+TAG :=HA
 etcd-run:
+ifdef TAG
 	docker run -d -v /usr/share/ca-certificates/:/etc/ssl/certs -p 4001:4001 -p 2380:2380 -p 2379:2379 --restart=always \
---name etcd quay.io/coreos/etcd:v3.3.8 \
+--name vdidesktop-etcd quay.io/coreos/etcd:v3.3.8 \
 etcd -name $(etcd_localnode) \
 -advertise-client-urls http://$(localnode):2379,http://$(localnode):4001 \
 -listen-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001 \
@@ -288,7 +291,23 @@ etcd -name $(etcd_localnode) \
 -listen-peer-urls http://0.0.0.0:2380 \
 -initial-cluster-token etcd-cluster-1 \
 -initial-cluster $(etcd_node1)=http://$(node1):2380,$(etcd_node2)=http://$(node2):2380,$(etcd_node3)=http://$(node3):2380 \
--initial-cluster-state new
+-initial-cluster-state new \
+--auto-compaction-retention=1
+else
+	docker run -d -v /usr/share/ca-certificates/:/etc/ssl/certs -p 4001:4001 -p 2380:2380 -p 2379:2379 --restart=always \
+--name vdidesktop-etcd quay.io/coreos/etcd:v3.3.8 \
+etcd -name etcd \
+-advertise-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001 \
+-listen-client-urls http://0.0.0.0:2379,http://0.0.0.0:4001 \
+-initial-advertise-peer-urls http://0.0.0.0:2380 \
+-listen-peer-urls http://0.0.0.0:2380 \
+-initial-cluster-token etcd-cluster-1 \
+-initial-cluster-state new \
+--auto-compaction-retention=1
+endif
+
+
+
 
 etcd-start:
 	docker start etcd || :
