@@ -12,6 +12,11 @@
   - flask
   - Django
 
+    |课程 |日期| 状态     |备注|
+    | :--- | :---- | :------- |:----- |:----- |
+    | Vue+Django REST framework 打造生鲜电商项目 |   |  待学习    |      |
+    | Django Rest Framework 实战和源码剖析教程 |   |  待学习    |      |
+
 
 - 运维
 
@@ -27,11 +32,9 @@
 | :--- | :---- | :------- |:----- |:----- |
 | Python分布式爬虫打造搜索引擎 |   |  待学习    |      |
 | 北京大学 高级数据结构与算法 |   |  待学习    |      |
-|Vue+Django REST framework |   |  待学习    |      |
 |Elasticsearch顶尖高手系列-快速入门篇 |   |  待学习    |      |
 |Elasticsearch顶尖高手系列:高手进阶篇 |   |  待学习    |      |
 |Django Rest Framework 实战和源码剖析教程 |   |  待学习    |      |
-
 |selenium python 自动化测试课程 |   |  待学习    |      |
 
 
