@@ -1,1 +1,0 @@
-- [系统设计和架构设计](https://github.com/PegasusWang/system-design-primer/blob/master/README-zh-Hans.md)
