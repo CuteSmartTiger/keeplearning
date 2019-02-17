@@ -24,7 +24,7 @@ then
     #监控desktop
 
 
-    if [ "$(ps -ef | grep "vdidesktop-desktop" | grep -v grep)" == "" ]
+    if [ "$(ps -ef | grep vdidesktop | grep -v grep | grep -v  mysql)" == "" ]
     then
         if [ "$(ps -ef | grep "mysqld" | grep -v grep)" == "" ]; then
             echo `date`  "mysql stop" >> /var/log/messages
@@ -57,7 +57,7 @@ fi
 if [ "${ip_nums}" == "2" ]
 then
     #判断desktop是否启动
-    if [ "$(ps -ef | grep "vdidesktop-desktop" | grep -v grep)" == "" ]
+    if [ "$(ps -ef | grep vdidesktop | grep -v grep | grep -v  mysql)" == "" ]
     then
         if [ "$(ps -ef | grep "mysqld" | grep -v grep)" == "" ]; then
             echo `date` "mysql stop" >> /var/log/messages
