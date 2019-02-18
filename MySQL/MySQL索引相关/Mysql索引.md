@@ -175,12 +175,16 @@ select * from zl_yhjbqk order by qc_bh（建立qc_bh索引）
 select * from zl_yhjbqk where qc_bh=’7001’ order by cb_sx（建立qc_bh+cb_sx索引，注：只是一个索引，其中包括qc_bh和cb_sx字段）
 
 查询中统计或分组统计的字段
-
+```
 select max(hbs_bh) from zl_yhjbqk
 
 select qc_bh,count(*) from zl_yhjbqk group by qc_bh
+```
+
 
 什么情况下应不建或少建索引
+```
+
 
 表记录太少
 
@@ -272,3 +276,4 @@ YEAR(adddate)
 8，不使用NOT IN和操作
 
 NOT IN和操作都不会使用索引将进行全表扫描。NOT IN可以NOT EXISTS代替，id3则可使用id>3 or id
+```

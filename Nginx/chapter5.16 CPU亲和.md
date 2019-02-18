@@ -27,7 +27,12 @@ worker_cpu_affinity auto;
 ```
 
 user www-data;
+
+#worker角色的进程个数（nginx启动后有多少个worker处理http请求。master不处理请求，而是根据相应配置文件信息管理worker进程.   master进程主要负责对外揽活（即接收客户端的请求），并将活儿合理的分配给多个worker，每个worker进程主要负责干活（处理请求））。
 worker_processes 4;
+
+
+
 pid /run/nginx.pid;
 #自动配置，不用再按序号配置worker_cpu_affinity
 worker_cpu_affinity auto;
