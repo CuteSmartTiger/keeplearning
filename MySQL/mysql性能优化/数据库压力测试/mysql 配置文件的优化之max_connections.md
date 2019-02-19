@@ -2,6 +2,7 @@
 
 指定MySQL允许的最大连接进程数,若经常出现Too Many Connections的错误提示，则需要增大该参数值。
 max_connections=1000;
+
 ```
 
 set global max_connections=100;
