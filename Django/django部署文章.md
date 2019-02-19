@@ -1,0 +1,1 @@
+- [Nginx+uWSGI+Django部署web服务器](https://www.cnblogs.com/tielemao/p/9548105.html#%E7%BC%96%E8%BE%91luffyluffysettings.py)(写的比较详细)
