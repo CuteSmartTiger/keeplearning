@@ -12,13 +12,15 @@ redisClient = redis.StrictRedis(host='192.168.6.92', port=6379, db=0)
 # res1 = redisClient.set('count', 0)
 # print res1
 
-redisClient.keys()
-res1=redisClient.incr('counter')
-print res1
 
-for i in range(20000):
-    res1 = redisClient.incr('counter')
-print res1
+
+# redisClient.keys()
+# res1=redisClient.incr('counter')
+# print res1
+
+# for i in range(20000):
+#     res1 = redisClient.incr('counter')
+# print res1
 # value = redisClient.get('test_redis')
 # value1 = redisClient.get('count')
 # if value1:
