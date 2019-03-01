@@ -5,4 +5,4 @@
 
 
 
-- [Mysql高性能优化规范建议](https://www.cnblogs.com/huchong/p/10219318.html)
+- [Mysql高性能优化规范建议](https://www.cnblogs.com/huchong/p/10219318.html)(极力推荐此文章
