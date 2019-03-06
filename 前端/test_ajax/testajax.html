@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="jquery.min.js"></script>
+</head>
+<body>
+
+<p>点击按钮就可以执行 <em>displayDate()</em> 函数。</p>
+
+<button id="myBtn">点击这里</button>
+<script>
+document.getElementById("myBtn").onclick=function(){displayDate()};
+function displayDate()
+{
+  var url='http://192.168.6.95/v2/virtualmachines/compare_version?uuid=3295be80-02d6-3d5c-23b3-955af0246301';
+  $.ajax({
+     url:url,
+     dataType:'jsonp',
+     jsonp:'callback',
+     processData: false,
+     type:'get',
+     success:function(data){
+       console.log(data);
+       console.log(data['agent']);
+     },
+     error:function(XMLHttpRequest, textStatus, errorThrown) {
+       alert(XMLHttpRequest.status);
+       alert(XMLHttpRequest.readyState);
+       alert(textStatus);
+     }
+   });
+    // alert('liuhu');
+}
+</script>
+
+
+</body>
+</html>
