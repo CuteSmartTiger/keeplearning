@@ -47,7 +47,7 @@ nginx -c /etc/nginx/nginx.conf
 vi /etc/nginx/conf.d/vserver1.conf
 vserver1.conf
 ```
-erver {
+server {
     listen      192.168.6.90:80;
     server_name  localhost;
 
