@@ -84,13 +84,8 @@ set global innodb_thread_concurrency=16;
 
 
 
-
-
-
   增加并发到500则失败
   mysqlslap -a -c 500 -i 10 -uroot -p123123
-
-
   ```
 
 
