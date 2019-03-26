@@ -18,10 +18,21 @@ ab -n 100 -c 100 http://192.168.6.92/admin/home
 简易化安装脚本：
 ```SHELL
 #! /bin/bash
+dns-nameserver 8.8.8.8 > /etc/network/interfaces
 
 
+sudo mv /var/lib/dpkg/info  /var/lib/dpkg/info_old
+sudo mkdir /var/lib/dpkg/info
+sudo apt-get update
+sudo apt-get -f install
+sudo mv /var/lib/dpkg/info/*   /var/lib/dpkg/info_old
+sudo rm -rf  /var/lib/dpkg/info
+sudo mv  /var/lib/dpkg/info_old  /var/lib/dpkg/info
 
+sudo apt-get update
+sudo apt-get -y install percona-toolkit
 
+sudo apt-get install apache2-utils
 
 ```
 
