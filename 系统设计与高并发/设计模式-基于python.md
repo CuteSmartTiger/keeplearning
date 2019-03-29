@@ -14,17 +14,17 @@ principle）是面向对象设计的基本原则之一（SOLID中的O）
 
 [第一章 创建型模式](#build)
 ----
-- [2.1 工厂模式](#)(重点)
+- [2.1 工厂模式(含 单例模式)](#)(重点)
 - [2.2 建造者模式](#)
 - [2.3 原型模式](#)
 
 [第二章 结构型模式](#construct)
 ----
-- [2.1 适配器模型](#adopt)
+- [2.1 适配器模型](#adopt)(重点)
 - [2.2 修饰器模型](#decorator)(重点)
 
 - [2.5 MVC模型](#mvc)(重点)
-- [2.6 代理设计模式（Proxy design pattern）](#Proxy)
+- [2.6 代理设计模式（Proxy design pattern）](#Proxy)(重点)
     - 保护/防护代理:用于对处理敏感信息的对象进行访问控制
     - 远程代理：代表一个活跃于远程位置（例如，我们自己的远程服务器或云服务）的对象
     - 虚拟代理：将一个对象的初始化延迟到真正需要使用时进行
@@ -38,8 +38,8 @@ principle）是面向对象设计的基本原则之一（SOLID中的O）
 - [3.3 解释器模式](#Interpreter)
 - [3.4 观察者模式](#inspect)(重点)
 - [3.5 状态模式](#State)
-- [3.6 策略模式](#Strategy)
-- [3.7 模板模式](#template)
+- [3.6 策略模式](#Strategy)(重点)
+- [3.7 模板模式](#template)(重点)
 
 
 
@@ -48,9 +48,78 @@ principle）是面向对象设计的基本原则之一（SOLID中的O）
 ####  结构型模式
 <h5 id='construct'></h>
 
+<h5 id='decorator'>2.2 修饰器模型</h>
+
+  - 使用的场景：
+  - 主要设计思路：
+  - 代码示例：
+  ```python
+  # 斐波那契数列, 以下方法计算比较耗时
+    def fibonacci(n):
+      assert (n >= 0), 'n must be >= 0'
+      return n if n in (0, 1) else fibonacci(n - 1) + fibonacci(n - 2)
 
 
-- <h5 id='mvc'>MVC模型</h>
+    if __name__ == '__main__':
+        from timeit import Timer
+
+        t = Timer('fibonacci(8)', 'from __main__ import fibonacci')
+        print(t.timeit())  # 19.1498459
+
+   # 使用字典缓存计算结果进行计算提速
+    known = {0: 0, 1: 1}
+    def fibonacci(n):
+        assert (n >= 0), 'n must be >= 0'
+        if n in known:
+            return known[n]
+        res = fibonacci(n - 1) + fibonacci(n - 2)
+        known[n] = res
+        return res
+
+
+    if __name__ == '__main__':
+        from timeit import Timer
+
+        t = Timer('fibonacci(100)', 'from __main__ import fibonacci')
+        print(t.timeit())  # 0.4535593
+
+    # 使用装饰器进行优化：
+    import functools
+
+
+def memoize(fn):
+    known = dict()
+
+    @functools.wraps(fn)
+    def memoizer(*args):
+        if args not in known:
+            known[args] = fn(*args)
+        return known[args]
+
+    return memoizer
+
+
+
+@memoize
+def fibonacci(n):
+    '''返回斐波那契数列的第n个数'''
+    assert (n >= 0), 'n must be >= 0'
+    return n if n in (0, 1) else fibonacci(n - 1) + fibonacci(n - 2)
+
+
+if __name__ == '__main__':
+    from timeit import Timer
+
+    measure = [{'exec': 'fibonacci(100)', 'import': 'fibonacci','func': fibonacci}]
+    for m in measure:
+        t = Timer('{}'.format(m['exec']), 'from __main__ import {}'.format(m['import']))
+        print('name: {}, doc: {}, executing: {}, time:{}'.format(m['func'].__name__, m['func'].__doc__, m['exec'],
+                                                                 t.timeit()))
+    # name: fibonacci, doc: 返回斐波那契数列的第n个数, executing: fibonacci(100), time:0.4526535
+  ```
+
+
+<h5 id='mvc'>MVC模型</h>
 
   - 概念：模型-视图-控制器
 
@@ -67,10 +136,99 @@ principle）是面向对象设计的基本原则之一（SOLID中的O）
 #### 行为型模式
 <h5 id='motion'></h>
 
-<h5 id='inspect'>3.4 观察者模式</h>
+<h5 id='Chain'>3.1 责任链模式</h>
+
+- 使用的场景：
+- 主要设计思路：
+- 代码示例：
+
+
+
+
+<h5 id='Command'>3.2 命令模式</h>
 
   - 使用的场景：
   - 主要设计思路：
+  - 代码示例：
+    ```python
+    import os
+
+    verbose = True
+
+
+    class RenameFile:
+        def __init__(self, path_src, path_dest):
+            self.src, self.dest = path_src, path_dest
+
+        def execute(self):
+            if verbose:
+                print("[renaming '{}' to '{}']".format(self.src, self.dest))
+            os.rename(self.src, self.dest)
+
+        def undo(self):
+            if verbose:
+                print("[renaming '{}' back to '{}']".format(self.dest, self.src))
+            os.rename(self.dest, self.src)
+
+
+    class CreateFile:
+        def __init__(self, path, txt='hello world\n'):
+            self.path, self.txt = path, txt
+
+        def execute(self):
+            if verbose:
+                print("[creating file '{}']".format(self.path))
+            with open(self.path, mode='w') as out_file:
+                out_file.write(self.txt)
+
+        def undo(self):
+            delete_file(self.path)
+
+
+    class ReadFile:
+        def __init__(self, path):
+            self.path = path
+
+        def execute(self):
+            if verbose:
+                print("[reading file '{}']".format(self.path))
+            with open(self.path, mode='r') as in_file:
+                print(in_file.read())
+
+
+    def delete_file(path):
+        if verbose:
+            print("deleting file '{}'".format(path))
+        os.remove(path)
+
+
+    def main():
+        orig_name, new_name = 'file1', 'file2'
+        commands = []
+        for cmd in CreateFile(orig_name), ReadFile(orig_name), RenameFile(orig_name, new_name):
+            commands.append(cmd)
+            [c.execute() for c in commands]
+            answer = input('reverse the executed commands? [y/n] ')
+        if answer not in 'yY':
+            print("the result is {}".format(new_name))
+            exit()
+        for c in reversed(commands):
+            try:
+                c.undo()
+            except AttributeError as e:
+                pass
+
+
+    if __name__ == "__main__":
+        main()
+
+    ```
+
+
+<h5 id='inspect'>3.4 观察者模式</h>
+
+  - 使用的场景：消息发布 订阅
+  - 主要设计思路：被观察者被多个观察者观察着，被观察者有变化，则会处发导致所有观察者也变化
   - 代码示例：
     ```python
     class Publisher:
