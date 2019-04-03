@@ -40,7 +40,12 @@
     | Vue+Django REST framework 打造生鲜电商项目 |   |  待学习    |      |
     | Django Rest Framework 实战和源码剖析教程 |   |  待学习    |      |
 
+- go
 
+    |课程 |日期| 状态     |备注|
+    | :--- | :---- | :------- |:----- |:----- |
+    | golang实战视频：beego开发实战-轻博客(liteblog) | 0112  |  已学习    |      |
+    |  |   |      |      |
 
 - 前端
   - Vue
