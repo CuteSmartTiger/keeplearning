@@ -12,17 +12,21 @@
 principle）是面向对象设计的基本原则之一（SOLID中的O）
 
 
+
 [第一章 创建型模式](#build)
 ----
-- [2.1 工厂模式(含 单例模式)](#)(重点)
-- [2.2 建造者模式](#)
-- [2.3 原型模式](#)
+- [1.1 工厂模式(含 单例模式)](#)(重点)
+- [1.2 建造者模式](#)
+- [1.3 原型模式](#)
+
+<h5 id='content'></h>
 
 [第二章 结构型模式](#construct)
 ----
-- [2.1 适配器模型](#adopt)(重点)
-- [2.2 修饰器模型](#decorator)(重点)
-
+- [2.1 适配器模式](#adopt)(重点)
+- [2.2 修饰器模式](#decorator)(重点)
+- [2.3 外观模式](#Facade)(重点)
+- [2.4 享元模式](#Flyweight)(重点)
 - [2.5 MVC模型](#mvc)(重点)
 - [2.6 代理设计模式（Proxy design pattern）](#Proxy)(重点)
     - 保护/防护代理:用于对处理敏感信息的对象进行访问控制
@@ -48,83 +52,207 @@ principle）是面向对象设计的基本原则之一（SOLID中的O）
 ####  结构型模式
 <h5 id='construct'></h>
 
+[返回目录](#content)
+
+
+
+<h5 id='adopt'>2.1 适配器模型</h>
+
+  - 遵守的设计原则：开放/封闭原则，对扩展是开放的，对修改则是封闭的
+  - 不同方法实现适配器模式的示例代码：
+    - 使用了类的内部字典实现适配器
+      ```python
+      class Synthesizer:
+        def __init__(self, name):
+            self.name = name
+
+        def __str__(self):
+            return 'the {} synthesizer'.format(self.name)
+
+        def play(self):
+            return 'is playing an electronic song'
+
+
+      class Human:
+          def __init__(self, name):
+              self.name = name
+
+          def __str__(self):
+              return '{} the human'.format(self.name)
+
+          def speak(self):
+              return 'says hello'
+
+
+      class Computer:
+          def __init__(self, name):
+              self.name = name
+
+          def __str__(self):
+              return 'the {} computer'.format(self.name)
+
+          def execute(self):
+              return 'executes a program'
+
+
+      class Adapter:
+          def __init__(self, obj, adapted_methods):
+              self.obj = obj
+              # print(adapted_methods)
+              # print(self.__dict__)
+              print(self.__dict__.update(adapted_methods))
+              # print(self.__dict__)
+
+          # 定义此方法，可以访问后续的i.name，
+          # 这是__getattr__的很重要的用法
+          def __getattr__(self, item):
+              return getattr(self.obj, item)
+
+          def __str__(self):
+              return str(self.obj)
+
+
+      def main():
+          objects = [Computer('Asus')]
+          synth = Synthesizer('moog')
+          objects.append(Adapter(synth, dict(execute=synth.play)))
+
+          human = Human('Bob')
+          objects.append(Adapter(human, dict(execute=human.speak)))
+          for i in objects:
+              print('{} {}'.format(str(i), i.execute()))
+              print(i.name)
+
+
+      if __name__ == "__main__":
+          main()
+      ```
+    - 使用继承实现适配器
+  - 不同方法的特点 优缺点
+
+[返回目录](#content)
+
 <h5 id='decorator'>2.2 修饰器模型</h>
 
-  - 使用的场景：
+  - 遵守的设计原则：
+  - 对一个对象添加额外的功能的方法有：
+    - 直接将功能添加到对象所属的类
+    - 组合:组合优于继承
+    - 继承
+    - 修饰器
+
+  - 使用的场景：缓存，性能测试，权限认证
   - 主要设计思路：
   - 代码示例：
+    - 缓存
+      ```python
+      # 斐波那契数列, 以下方法计算比较耗时
+        def fibonacci(n):
+          assert (n >= 0), 'n must be >= 0'
+          return n if n in (0, 1) else fibonacci(n - 1) + fibonacci(n - 2)
+
+
+        if __name__ == '__main__':
+            from timeit import Timer
+
+            t = Timer('fibonacci(8)', 'from __main__ import fibonacci')
+            print(t.timeit())  # 19.1498459
+
+       # 使用字典缓存计算结果进行计算提速
+        known = {0: 0, 1: 1}
+        def fibonacci(n):
+            assert (n >= 0), 'n must be >= 0'
+            if n in known:
+                return known[n]
+            res = fibonacci(n - 1) + fibonacci(n - 2)
+            known[n] = res
+            return res
+
+
+        if __name__ == '__main__':
+            from timeit import Timer
+
+            t = Timer('fibonacci(100)', 'from __main__ import fibonacci')
+            print(t.timeit())  # 0.4535593
+
+        # 使用装饰器进行优化：
+        import functools
+
+
+      def memoize(fn):
+          known = dict()
+
+          @functools.wraps(fn)
+          def memoizer(*args):
+              if args not in known:
+                  known[args] = fn(*args)
+              return known[args]
+
+          return memoizer
+
+
+
+      @memoize
+      def fibonacci(n):
+          '''返回斐波那契数列的第n个数'''
+          assert (n >= 0), 'n must be >= 0'
+          return n if n in (0, 1) else fibonacci(n - 1) + fibonacci(n - 2)
+
+
+      if __name__ == '__main__':
+          from timeit import Timer
+
+          measure = [{'exec': 'fibonacci(100)', 'import': 'fibonacci','func': fibonacci}]
+          for m in measure:
+              t = Timer('{}'.format(m['exec']), 'from __main__ import {}'.format(m['import']))
+              print('name: {}, doc: {}, executing: {}, time:{}'.format(m['func'].__name__, m['func'].__doc__, m['exec'],
+                                                                       t.timeit()))
+        # name: fibonacci, doc: 返回斐波那契数列的第n个数, executing: fibonacci(100), time:0.4526535
+        ```
+    - 性能测试
+    - 权限验证
+
+[返回目录](#content)
+
+<h5 id='Facade'>2.3 外观模式</h>
+
+- 遵守的设计原则：
+- 使用的场景：
+   1. 系统包含多层，外观模式也能派上用场。你可以为每一层引入一个外观入口点，并让所有层级通过它们的外观相互通信。这提高了层级之间的松耦合性，尽可能保持层级独立
+- 主要设计思路：外观设计模式有助于隐藏系统的内部复杂性，并通过一个简化的接口向客户端暴露必要的部分
+- 代码示例：
   ```python
-  # 斐波那契数列, 以下方法计算比较耗时
-    def fibonacci(n):
-      assert (n >= 0), 'n must be >= 0'
-      return n if n in (0, 1) else fibonacci(n - 1) + fibonacci(n - 2)
 
-
-    if __name__ == '__main__':
-        from timeit import Timer
-
-        t = Timer('fibonacci(8)', 'from __main__ import fibonacci')
-        print(t.timeit())  # 19.1498459
-
-   # 使用字典缓存计算结果进行计算提速
-    known = {0: 0, 1: 1}
-    def fibonacci(n):
-        assert (n >= 0), 'n must be >= 0'
-        if n in known:
-            return known[n]
-        res = fibonacci(n - 1) + fibonacci(n - 2)
-        known[n] = res
-        return res
-
-
-    if __name__ == '__main__':
-        from timeit import Timer
-
-        t = Timer('fibonacci(100)', 'from __main__ import fibonacci')
-        print(t.timeit())  # 0.4535593
-
-    # 使用装饰器进行优化：
-    import functools
-
-
-def memoize(fn):
-    known = dict()
-
-    @functools.wraps(fn)
-    def memoizer(*args):
-        if args not in known:
-            known[args] = fn(*args)
-        return known[args]
-
-    return memoizer
-
-
-
-@memoize
-def fibonacci(n):
-    '''返回斐波那契数列的第n个数'''
-    assert (n >= 0), 'n must be >= 0'
-    return n if n in (0, 1) else fibonacci(n - 1) + fibonacci(n - 2)
-
-
-if __name__ == '__main__':
-    from timeit import Timer
-
-    measure = [{'exec': 'fibonacci(100)', 'import': 'fibonacci','func': fibonacci}]
-    for m in measure:
-        t = Timer('{}'.format(m['exec']), 'from __main__ import {}'.format(m['import']))
-        print('name: {}, doc: {}, executing: {}, time:{}'.format(m['func'].__name__, m['func'].__doc__, m['exec'],
-                                                                 t.timeit()))
-    # name: fibonacci, doc: 返回斐波那契数列的第n个数, executing: fibonacci(100), time:0.4526535
   ```
 
+[返回目录](#content)
 
-<h5 id='mvc'>MVC模型</h>
+<h5 id='Flyweight'>2.4 享元模式</h>
+
+- 遵守的设计原则：
+- 使用的场景：享元模式是一个用于优化的设计模式
+- 主要设计思路：享元设计模式通过为相似对象引入数据共享来最小化内存使用，提升性能。一个享元（Flyweight）就是一个包含状态独立的不可变（又称固有的）数据的共享对象。依赖状态的可变（又称非固有的）数据不应是享元的一部分，因为每个对象的这种信息都不同，无法共享。如果享元需要非固有的数据，应该由客户端代码显式地提供
+- 代码示例：
+```
+
+
+```
+
+
+
+
+[返回目录](#content)
+
+<h5 id='mvc'>2.5 MVC模型</h>
 
   - 概念：模型-视图-控制器
 
 
- <h5 id='Proxy'>代理设计模式</h>  
+[返回目录](#content)
+
+<h5 id='Proxy'>代理设计模式</h>  
+
+
 
   - 概念
   - 设计思路：
@@ -133,17 +261,19 @@ if __name__ == '__main__':
     - 2
     - 3
 
+
 #### 行为型模式
 <h5 id='motion'></h>
 
+[返回目录](#content)
+
 <h5 id='Chain'>3.1 责任链模式</h>
 
-- 使用的场景：
-- 主要设计思路：
-- 代码示例：
+  - 使用的场景：
+  - 主要设计思路：
+  - 代码示例：
 
-
-
+[返回目录](#content)
 
 <h5 id='Command'>3.2 命令模式</h>
 
@@ -224,6 +354,7 @@ if __name__ == '__main__':
 
     ```
 
+[返回目录](#content)
 
 <h5 id='inspect'>3.4 观察者模式</h>
 
@@ -321,14 +452,11 @@ if __name__ == '__main__':
         main()
     ```
 
-
-
+[返回目录](#content)
 
 <h5 id='State'>3.5 状态模式</h>
 
-
-
-
+[返回目录](#content)
 
 <h5 id='Strategy'>3.6 策略模式</h>
 
@@ -398,3 +526,6 @@ if __name__ == '__main__':
         if __name__ == '__main__':
             main()
     ```
+
+
+[返回目录](#content)
