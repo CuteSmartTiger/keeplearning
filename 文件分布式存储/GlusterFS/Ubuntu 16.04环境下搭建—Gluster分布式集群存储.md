@@ -42,13 +42,90 @@ gluster pool list - list all the nodes in the pool (including localhost)
 6. 在server1&2节点上都需要创建创建数据目录
 mkdir -p /gluster/data
 
+
+7. 配置数据卷
+(1). 配置分布式卷
+
+创建卷，执行以下命令时，请查看gluster pool list，并且ping server1 ,ping server2均无问题
+gluster volume create GlusterFB server1:/gluster/data server2:/gluster/data force
+显示成功volume create: GlusterFB: success: please start the volume to access data
+
+
+启动数据卷GlusterFB
+gluster volume start  GlusterFB
+
+查看GlusterFB的配置信息
+gluster volume info GlusterFB  
+显示如下信息：
+```SHELL
+Volume Name: GlusterFB
+Type: Distribute
+Volume ID: b4d9ca79-2694-4ee7-85a3-04939666a682
+Status: Started
+Number of Bricks: 2
+Transport-type: tcp
+Bricks:
+Brick1: server1:/gluster/data
+Brick2: server2:/gluster/data
+Options Reconfigured:
+performance.readdir-ahead: on
+```
+
+#挂载GlusterFB卷
+mount -t glusterfs 127.0.0.1:GlusterFB /opt
+WARNING: getfattr not found, certain checks will be skipped..
+/sbin/mount.glusterfs: according to mtab, GlusterFS is already mounted on /opt  
+
+cd /opt/ &&  touch {a..f} && ll
+
+
+在server2上查看数据卷信息
+gluster volume info GlusterFB  
+显示相同的信息
+
+
+
+
+查看分布式存储
+server1上执行
+ll /gluster/data
+-rw-r--r-- 2 root root    0 Apr  2 13:45 a
+-rw-r--r-- 2 root root    0 Apr  2 13:45 b
+-rw-r--r-- 2 root root    0 Apr  2 13:45 c
+
+
+
+server2上执行
+ll /gluster/data
+-rw-r--r-- 2 root root    0 Apr  2 13:45 d
+
+
+在client客户端挂载
+mkdir -p /gluster/data
+将指定服务器上的数据卷挂载到当前客户端的指定目录下
+mount.glusterfs 192.168.6.90:GlusterFB  /gluster/data
+
+
+
+##### 参考文章
+- [GlusterFS分布式存储](https://www.cnblogs.com/huangyanqi/p/8406534.html)(推荐)
+- [GlusterFS分布式存储集群-2. 使用](https://www.cnblogs.com/netonline/p/9107859.html)(推荐)
+- [GlusterFS技术详解](https://czero000.github.io/2016/04/05/glusterfs-technical-explanation.html)(推荐)
+
+
+
+
+```失败
 fdisk -l
 
+/dev/xvda2
+
+mkfs.xfs  -i size=512 /dev/xvda2
 
 
 mkfs.ext4 /dev/xvda2
 
 parted /dev/xvda2
 
-
 mount /dev/xvda2 /gluster/data
+```
