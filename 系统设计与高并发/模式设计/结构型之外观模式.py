@@ -53,16 +53,14 @@ class FileServer(Server):
         '''启动文件服务进程要求的操作'''
         self.state = State.running
 
+    def kill(self, restart=True):
+        print('Killing {}'.format(self))
+        '''终止文件服务进程要求的操作'''
+        self.state = State.restart if restart else State.zombie
 
-def kill(self, restart=True):
-    print('Killing {}'.format(self))
-    '''终止文件服务进程要求的操作'''
-    self.state = State.restart if restart else State.zombie
-
-
-def create_file(self, user, name, permissions):
-    '''检查访问权限的有效性、用户权限等'''
-    print("trying to create the file '{0}' for user '{1}' with permissions{2}".format(name, user, permissions))
+    def create_file(self, user, name, permissions):
+        '''检查访问权限的有效性、用户权限等'''
+        print("trying to create the file '{0}' for user '{1}' with permissions{2}".format(name, user, permissions))
 
 
 class ProcessServer(Server):
