@@ -9,7 +9,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/keeplearning$.coverage" NAME="结构型之外观模式 Coverage Results" MODIFIED="1554050035975" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/系统设计与高并发/模式设计" />
+    <SUITE FILE_PATH="coverage/keeplearning$.coverage" NAME="结构型之适配器模式 Coverage Results" MODIFIED="1554434154691" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/系统设计与高并发/模式设计" />
     <SUITE FILE_PATH="coverage/keeplearning$enterandexit.coverage" NAME="enterandexit Coverage Results" MODIFIED="1543743011632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fluent Python/魔法函数" />
     <SUITE FILE_PATH="coverage/keeplearning$enterandexit__1_.coverage" NAME="enterandexit (1) Coverage Results" MODIFIED="1543886372748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fluent Python/magic method" />
     <SUITE FILE_PATH="coverage/keeplearning$getattr.coverage" NAME="getattr Coverage Results" MODIFIED="1543886387383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fluent Python/magic method" />
@@ -18,41 +18,67 @@
     <session id="898299686">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="2" />
-          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.6" value="3" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitattributes" value="1" />
-          <entry key="py" value="27" />
+          <entry key="py" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="27" />
+          <entry key="Python" value="32" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1040" />
+          <entry key="py" value="1047" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1040" />
+          <entry key="Python" value="1047" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之外观模式.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="9" selection-start-line="9" selection-end-line="120" />
+              <folding>
+                <element signature="e#194#215#0" expanded="true" />
+                <marker date="1554428720836" expanded="true" signature="331:332" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="357:358" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="1349:1358" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="1609:1610" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="1609:1618" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="1785:1786" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="1785:1794" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="1919:1920" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="1951:1952" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="2023:2032" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="2110:2119" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="2210:2219" ph="..." />
+                <marker date="1554428720836" expanded="true" signature="2313:2322" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -152,7 +178,7 @@
       <path value="$PROJECT_DIR$/前端/vue/manageadmin/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="6" />
     <option name="y" value="48" />
     <option name="width" value="1911" />
@@ -207,7 +233,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.结构型之外观模式">
+  <component name="RunManager" selected="Python.getattr">
     <configuration name="代理模式之代理保护简单版" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="keeplearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -222,6 +248,50 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/代理模式之代理保护简单版.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="结构型之外观模式" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="keeplearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/系统设计与高并发/模式设计" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之外观模式.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="结构型之适配器模式" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="keeplearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/系统设计与高并发/模式设计" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之适配器模式.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -365,11 +435,9 @@
     <list>
       <item itemvalue="Python.getattr" />
       <item itemvalue="Python.代理模式之代理保护简单版" />
-      <item itemvalue="Python.结构型之外观模式" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.结构型之外观模式" />
         <item itemvalue="Python.代理模式之代理保护简单版" />
         <item itemvalue="Python.getattr" />
       </list>
@@ -389,14 +457,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="4" y="32" width="1274" height="656" extended-state="0" />
+    <frame x="4" y="32" width="1274" height="656" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20394737" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21710527" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27342257" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.063097514" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3288719" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -454,18 +523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="51" column="3" selection-start-line="51" selection-start-column="3" selection-end-line="51" selection-end-column="3" />
-          <folding>
-            <marker date="1553407009399" expanded="true" signature="245:247" ph="..." />
-            <marker date="1553407009399" expanded="true" signature="245:250" ph="..." />
-            <marker date="1553407009399" expanded="true" signature="318:320" ph="..." />
-            <marker date="1553407009399" expanded="true" signature="318:323" ph="..." />
-            <marker date="1553407009399" expanded="true" signature="430:432" ph="..." />
-            <marker date="1553407009399" expanded="true" signature="430:435" ph="..." />
-            <marker date="1553407009399" expanded="true" signature="520:622" ph="..." />
-            <marker date="1553407009399" expanded="true" signature="544:549" ph="..." />
-            <marker date="1553407009399" expanded="true" signature="641:646" ph="..." />
-            <marker date="1553407009399" expanded="true" signature="697:698" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -480,52 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
           <caret line="97" column="10" lean-forward="true" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="10" />
-          <folding>
-            <marker date="1553784967163" expanded="true" signature="240:246" ph="..." />
-            <marker date="1553784967163" expanded="true" signature="298:304" ph="..." />
-            <marker date="1553784967163" expanded="true" signature="488:494" ph="..." />
-            <marker date="1553784967163" expanded="true" signature="678:684" ph="..." />
-            <marker date="1553784967163" expanded="true" signature="794:803" ph="..." />
-            <marker date="1553784967163" expanded="true" signature="899:908" ph="..." />
-            <marker date="1553784967163" expanded="true" signature="1025:1034" ph="..." />
-            <marker date="1553784967163" expanded="true" signature="1100:1109" ph="..." />
-            <marker date="1553784967163" expanded="true" signature="1321:1323" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之适配器模式.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
-          <folding>
-            <marker date="1553932146569" expanded="true" signature="215:216" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="245:246" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="245:250" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="294:295" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="294:299" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="369:370" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="369:374" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="431:432" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="461:462" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="461:466" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="510:511" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="510:515" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="580:581" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="580:585" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="626:627" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="656:657" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="656:661" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="705:706" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="705:710" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="780:781" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="780:785" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="833:834" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="879:880" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="1084:1129" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="1147:1148" ph="..." />
-            <marker date="1553932146569" expanded="true" signature="1147:1152" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -536,31 +547,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之外观模式.py">
+    <entry file="file://$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之享元模式.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1782">
-          <caret line="45" column="8" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-          <folding>
-            <element signature="e#194#215#0" expanded="true" />
-            <marker date="1554050035956" expanded="true" signature="331:332" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="357:358" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="1323:1332" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="1583:1584" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="1583:1592" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="1759:1760" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="1759:1768" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="1893:1894" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="1925:1926" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="1997:2006" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="2084:2093" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="2184:2193" ph="..." />
-            <marker date="1554050035956" expanded="true" signature="2287:2296" ph="..." />
-          </folding>
+        <state relative-caret-position="162">
+          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之享元模式.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之适配器模式.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="9" selection-start-line="9" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之外观模式.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="9" selection-start-line="9" selection-end-line="120" />
+          <folding>
+            <element signature="e#194#215#0" expanded="true" />
+            <marker date="1554428720836" expanded="true" signature="331:332" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="357:358" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="1349:1358" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="1609:1610" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="1609:1618" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="1785:1786" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="1785:1794" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="1919:1920" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="1951:1952" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="2023:2032" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="2110:2119" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="2210:2219" ph="..." />
+            <marker date="1554428720836" expanded="true" signature="2313:2322" ph="..." />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
