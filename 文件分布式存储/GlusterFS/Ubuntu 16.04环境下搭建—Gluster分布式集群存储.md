@@ -48,6 +48,7 @@ mkdir -p /gluster/data
 
 创建卷，执行以下命令时，请查看gluster pool list，并且ping server1 ,ping server2均无问题
 gluster volume create GlusterFB server1:/gluster/data server2:/gluster/data force
+
 显示成功volume create: GlusterFB: success: please start the volume to access data
 
 
