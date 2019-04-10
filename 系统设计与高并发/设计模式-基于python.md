@@ -1,6 +1,14 @@
 ## 目录
+- 学习设计模式的时机与技巧
 - 设计模式的原则
-- 设计模式的介绍
+- 多个设计模式的介绍
+- 实战项目与考题理解设计模式
+- [关于设计模式优秀资源(优秀文章资源及相关书籍推荐)](#resource)
+
+##  学习设计模式的时机与技巧
+  1. 建议在没有足够项目经验时可以先过一遍，了解基本的概念
+  2. 当积累一些工作经验后，可以挑选常见重点设计模式进行理解并可以选择历年的考题与项目加深理解
+
 
 
 ##  设计模式的原则
@@ -32,14 +40,13 @@
 
 ## 设计模式的介绍
 
+<h5 id='content'></h>
 
 [第一章 创建型模式](#build)
 ----
-- [1.1 工厂模式(含 单例模式)](#)(重点)
-- [1.2 建造者模式](#)
-- [1.3 原型模式](#)
-
-<h5 id='content'></h>
+- [1.1 工厂模式(工厂方法、抽象工厂、单例模式及三者的区别)](#factory)(重点)
+- [1.2 建造者模式](#Builder)
+- [1.3 原型模式](#Prototype)
 
 [第二章 结构型模式](#construct)
 ----
@@ -66,7 +73,340 @@
 - [3.6 策略模式](#Strategy)(重点)
 - [3.7 模板模式](#template)(重点)
 
+####  第一章 创建型模式
+<h5 id='build'></h>
 
+[返回目录](#content)
+
+<h5 id='factory'>1.1 工厂模式</h>
+
+  - 使用场景：
+  - 设计思路：
+  - 示例代码：
+    - 工厂方法
+      ```python
+        import xml.etree.ElementTree as etree
+        import json
+
+
+        class JSONConnector:
+          def __init__(self, filepath):
+              self.data = dict()
+              with open(filepath, mode='r', encoding='utf-8') as f:
+                  self.data = json.load(f)
+
+          @property
+          def parsed_data(self):
+              return self.data
+
+
+        class XMLConnector:
+          def __init__(self, filepath):
+              self.tree = etree.parse(filepath)
+
+          @property
+          def parsed_data(self):
+              return self.tree
+
+
+        def connection_factory(filepath):
+          if filepath.endswith('json'):
+              connector = JSONConnector
+          elif filepath.endswith('xml'):
+              connector = XMLConnector
+          else:
+              raise ValueError('Cannot connect to {}'.format(filepath))
+          return connector(filepath)
+
+
+        def connect_to(filepath):
+          factory = None
+          try:
+              factory = connection_factory(filepath)
+          except ValueError as ve:
+              print(ve)
+          return factory
+
+
+        def main():
+          sqlite_factory = connect_to('data/person.sq3')
+          print('=====================')
+          xml_factory = connect_to('data/person.xml')
+          xml_data = xml_factory.parsed_data
+          liars = xml_data.findall(".//{}[{}='{}']".format('person',
+                                                           'lastName', 'Liar'))
+          print('found: {} persons'.format(len(liars)))
+          for liar in liars:
+              print('first name: {}'.format(liar.find('firstName').text))
+              print('last name: {}'.format(liar.find('lastName').text))
+              [print('phone number ({})'.format(p.attrib['type']), p.text) for p in liar.find('phoneNumbers')]
+          print('==================')
+          json_factory = connect_to('data/donut.json')
+          json_data = json_factory.parsed_data
+          print('found: {} donuts'.format(len(json_data)))
+
+          for donut in json_data:
+              print('name: {}'.format(donut['name']))
+              print('price: ${}'.format(donut['ppu']))
+              [print('topping: {} {}'.format(t['id'], t['type'])) for t in donut['topping']]
+
+
+        if __name__ == '__main__':
+          main()
+      ```
+    - 抽象工厂
+      ```python
+      class Frog:
+          def __init__(self, name):
+              self.name = name
+
+          def __str__(self):
+              return self.name
+
+          def interact_with(self, obstacle):
+              print('{} the Frog encounters {} and {}!'.format(self, obstacle, obstacle.action()))
+
+      class Bug:
+          def __str__(self):
+              return 'a bug'
+
+          def action(self):
+              return 'eats it'
+
+
+      class FrogWorld:
+          def __init__(self, name):
+              print(self)
+              self.player_name = name
+
+          def __str__(self):
+              return '\n\n\t------ Frog World -------'
+
+          def make_character(self):
+              return Frog(self.player_name)
+
+          def make_obstacle(self):
+              return Bug()
+
+
+      class Wizard:
+          def __init__(self, name):
+              self.name = name
+
+          def __str__(self):
+              return self.name
+
+          def interact_with(self, obstacle):
+              print('{} the Wizard battles against {} and {}!'.format(self, obstacle, obstacle.action()))
+
+
+      class Ork:
+          def __str__(self):
+              return 'an evil ork'
+
+          def action(self):
+              return 'kills it'
+
+
+      class WizardWorld:
+          def __init__(self, name):
+              print(self)
+              self.player_name = name
+
+          def __str__(self):
+              return '\n\n\t------ Wizard World -------'
+
+          def make_character(self):
+              return Wizard(self.player_name)
+
+          def make_obstacle(self):
+              return Ork()
+
+
+      class GameEnvironment:
+          def __init__(self, factory):
+              self.hero = factory.make_character()
+              self.obstacle = factory.make_obstacle()
+
+          def play(self):
+              self.hero.interact_with(self.obstacle)
+
+
+      def validate_age(name):
+          try:
+              age = input('Welcome {}. How old are you? '.format(name))
+              age = int(age)
+          except ValueError as err:
+              print("Age {} is invalid, please try again...".format(age))
+              return (False, age)
+          return (True, age)
+
+
+      def main():
+          name = input("Hello. What's your name? ")
+          valid_input = False
+          while not valid_input:
+              valid_input, age = validate_age(name)
+          game = FrogWorld if age < 18 else WizardWorld
+          environment = GameEnvironment(game(name))
+          environment.play()
+
+      if __name__ == '__main__':
+          main()
+
+      ```
+    - 单利模式
+      ```python
+      ```
+  - 三种模式的对比总结：
+
+
+<h5 id='Builder'>1.2 建造者模式</h>
+
+- 使用场景：
+- 设计思路：
+- 示例代码：
+    ```python
+    from enum import Enum
+    import time
+
+    PizzaProgress = Enum('PizzaProgress', 'queued preparation baking ready')
+    PizzaDough = Enum('PizzaDough', 'thin thick')
+    PizzaSauce = Enum('PizzaSauce', 'tomato creme_fraiche')
+    PizzaTopping = Enum('PizzaTopping', 'mozzarella double_mozzarella bacon ham mushroomsred_onionoregano')
+    STEP_DELAY = 3  # 考虑到这是示例，单位为秒
+
+
+    class Pizza:
+        def __init__(self, name):
+            self.name = name
+            self.dough = None
+            self.sauce = None
+            self.topping = []
+
+        def __str__(self):
+            return self.name
+
+        def prepare_dough(self, dough):
+            self.dough = dough
+            print('preparing the {} dough of your {}...'.format(self.dough.name, self))
+            time.sleep(STEP_DELAY)
+            print('done with the {} dough'.format(self.dough.name))
+
+
+    class MargaritaBuilder:
+        def __init__(self):
+            self.pizza = Pizza('margarita')
+            self.progress = PizzaProgress.queued
+            self.baking_time = 5  # 考虑是示例，单位为秒
+
+        def prepare_dough(self):
+            self.progress = PizzaProgress.preparation
+            self.pizza.prepare_dough(PizzaDough.thin)
+
+        def add_sauce(self):
+            print('adding the tomato sauce to your margarita...')
+            self.pizza.sauce = PizzaSauce.tomato
+            time.sleep(STEP_DELAY)
+            print('done with the tomato sauce')
+
+        def add_topping(self):
+            print('adding the topping (double mozzarella, oregano) to your margarita')
+            self.pizza.topping.append([i for i in (PizzaTopping.double_mozzarella, PizzaTopping.oregano)])
+            time.sleep(STEP_DELAY)
+            print('done with the topping (double mozzarrella, oregano)')
+
+        def bake(self):
+            self.progress = PizzaProgress.baking
+            print('baking your margarita for {} seconds'.format(self.baking_time))
+            time.sleep(self.baking_time)
+            self.progress = PizzaProgress.ready
+            print('your margarita is ready')
+
+
+    class CreamyBaconBuilder:
+        def __init__(self):
+            self.pizza = Pizza('creamy bacon')
+            self.progress = PizzaProgress.queued
+            self.baking_time = 7  # 考虑是示例，单位为秒
+
+        def prepare_dough(self):
+            self.progress = PizzaProgress.preparation
+            self.pizza.prepare_dough(PizzaDough.thick)
+
+        def add_sauce(self):
+            print('adding the crème fraîche sauce to your creamy bacon')
+            self.pizza.sauce = PizzaSauce.creme_fraiche
+            time.sleep(STEP_DELAY)
+            print('done with the crème fraîche sauce')
+
+        def add_topping(self):
+            print('adding the topping (mozzarella, bacon, ham, mushrooms, red onion,oregano) to your creamy baon')
+            self.pizza.topping.append([t for t in
+                                       (PizzaTopping.mozzarella, PizzaTopping.bacon,
+                                        PizzaTopping.ham, PizzaTopping.mushrooms,
+                                        PizzaTopping.red_onion, PizzaTopping.oregano)])
+            time.sleep(STEP_DELAY)
+            print('done with the topping (mozzarella, bacon, ham, mushrooms, red onion,oregano)')
+
+        def bake(self):
+            self.progress = PizzaProgress.baking
+            print('baking your creamy bacon for {} seconds'.format(self.baking_time))
+            time.sleep(self.baking_time)
+            self.progress = PizzaProgress.ready
+            print('your creamy bacon is ready')
+
+
+    class Waiter:
+        def __init__(self):
+            self.builder = None
+
+        def construct_pizza(self, builder):
+            self.builder = builder
+            [step() for step in (builder.prepare_dough, builder.add_sauce, builder.add_topping, builder.bake)]
+
+        @property
+        def pizza(self):
+            return self.builder.pizza
+
+
+    def validate_style(builders):
+        try:
+            pizza_style = input('What pizza would you like, [m]argarita or [c]reamy bacon?')
+            builder = builders[pizza_style]()
+            valid_input = True
+        except KeyError as err:
+            print('Sorry, only margarita (key m) and creamy bacon (key c) are available')
+            return (False, None)
+        return (True, builder)
+
+
+    def main():
+        builders = dict(m=MargaritaBuilder, c=CreamyBaconBuilder)
+        valid_input = False
+        while not valid_input:
+            valid_input, builder = validate_style(builders)
+        print('==============')
+        waiter = Waiter()
+        waiter.construct_pizza(builder)
+        pizza = waiter.pizza
+        print('=====================')
+        print('Enjoy your {}!'.format(pizza))
+
+
+    if __name__ == '__main__':
+        main()
+    ```
+
+
+<h5 id='Prototype'>1.3 原型模式</h>
+
+- 使用场景：我们已有一个对象，并希望创建该对象的一个完整副本时，原型模式就派上用场了
+- 设计思路：原型设计模式（Prototype design pattern）帮助我们创建对象的克隆，其最简单的形式就是一个clone()函数，接受一个对象作为输入参数，返回输入对象的一个副本
+- 示例代码：
+    ```python
+
+    ```
 
 
 
@@ -431,6 +771,70 @@
   - 主要设计思路：享元设计模式通过为相似对象引入数据共享来最小化内存使用，提升性能。一个享元（Flyweight）就是一个包含状态独立的不可变（又称固有的）数据的共享对象。依赖状态的可变（又称非固有的）数据不应是享元的一部分，因为每个对象的这种信息都不同，无法共享。如果享元需要非固有的数据，应该由客户端代码显式地提供
   - 代码示例：
       ```python
+        from enum import Enum
+        import random
+
+        TreeType = Enum('TreeType', 'apple_tree cherry_tree peach_tree')
+
+
+        # print(TreeType.apple_tree.value)
+        # print(TreeType.cherry_tree.value)
+
+        class Tree:
+            pool = dict()
+
+            def __new__(cls, tree_type):
+                obj = cls.pool.get(tree_type, None)
+                if not obj:
+                    print('{0}不存在'.format(tree_type))
+                    obj = object.__new__(cls)
+                    cls.pool[tree_type] = obj
+                    print(cls.pool)
+                    obj.tree_type = tree_type
+                else:
+                    print('{0}已存在'.format(tree_type))
+                return obj
+
+            def render(self, age, x, y):
+                print('render a tree of type {} and age {} at ({}, {})'.format(self.tree_type,
+                                                                               age, x, y))
+
+
+        def main():
+            rnd = random.Random()
+            age_min, age_max = 1, 30  # 单位为年
+            min_point, max_point = 0, 100
+            tree_counter = 0
+            for _ in range(10):
+                t1 = Tree(TreeType.apple_tree)
+                t1.render(rnd.randint(age_min, age_max),
+                          rnd.randint(min_point, max_point),
+                          rnd.randint(min_point, max_point))
+                tree_counter += 1
+            for _ in range(3):
+                t2 = Tree(TreeType.cherry_tree)
+                t2.render(rnd.randint(age_min, age_max),
+                          rnd.randint(min_point, max_point),
+                          rnd.randint(min_point, max_point))
+                tree_counter += 1
+            for _ in range(5):
+                t3 = Tree(TreeType.peach_tree)
+                t3.render(rnd.randint(age_min, age_max),
+                          rnd.randint(min_point, max_point),
+                          rnd.randint(min_point, max_point))
+                tree_counter += 1
+
+            print('trees rendered: {}'.format(tree_counter))
+            print('trees actually created: {}'.format(len(Tree.pool)))
+            t4 = Tree(TreeType.cherry_tree)
+            t5 = Tree(TreeType.cherry_tree)
+            t6 = Tree(TreeType.apple_tree)
+            print('{} == {}? {}'.format(id(t4), id(t5), id(t4) == id(t5)))
+            print('{} == {}? {}'.format(id(t5), id(t6), id(t5) == id(t6)))
+
+
+        if __name__ == '__main__':
+            main()
 
 
       ```
@@ -445,14 +849,56 @@
 
 <h5 id='Proxy'>2.6 代理设计模式</h>  
 
-
-
-  - 概念
+  - 使用的场景
   - 设计思路：
-  - 实例
-    - 1
-    - 2
-    - 3
+  - 代码示例：
+    ```python
+      class SensitiveInfo:
+        def __init__(self):
+            self.users = ['nick', 'tom', 'ben', 'mike']
+
+        def read(self):
+            print('There are {} users: {}'.format(len(self.users), ' '.join(self.users)))
+
+        def add(self, user):
+            self.users.append(user)
+            print('Added user {}'.format(user))
+
+
+      class Info:
+        def __init__(self):
+            self.protected = SensitiveInfo()
+            self.secret = '0xdeadbeef'
+
+        def read(self):
+            self.protected.read()
+
+        def add(self, user):
+            sec = input('what is the secret? ')
+            self.protected.add(user) if sec == self.secret else print("That's wrong!")
+
+
+      def main():
+        info = Info()
+        while True:
+            print('1. read list |==| 2. add user |==| 3. quit')
+            key = input('choose option: ')
+            if key == '1':
+                info.read()
+            elif key == '2':
+                name = input('choose username: ')
+                info.add(name)
+            elif key == '3':
+                exit()
+            else:
+                print('unknown option: {}'.format(key))
+
+
+      # 此模式需要优化，存在缺陷
+      if __name__ == '__main__':
+        main()
+    ```
+
 
 
 #### 行为型模式
@@ -465,6 +911,9 @@
   - 使用的场景：
   - 主要设计思路：
   - 代码示例：
+  ```python
+
+  ```
 
 [返回目录](#motion)
 
@@ -744,3 +1193,10 @@
 
 
 [返回目录](#motion)
+
+<h5 id='resource'></h>
+## 优秀资源
+
+- [关于设计模式优秀资源](https://blog.csdn.net/LoveLion/article/category/738450/7)
+
+- [书籍资料(清单：，密码：)](百度链接)
