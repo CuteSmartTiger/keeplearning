@@ -9,7 +9,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/keeplearning$.coverage" NAME="创建型模式之原型模式 Coverage Results" MODIFIED="1554650230266" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/系统设计与高并发/模式设计" />
+    <SUITE FILE_PATH="coverage/keeplearning$.coverage" NAME="全局变量作用域 Coverage Results" MODIFIED="1554994132341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fluent Python/全局变量 局部变量" />
     <SUITE FILE_PATH="coverage/keeplearning$enterandexit.coverage" NAME="enterandexit Coverage Results" MODIFIED="1543743011632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fluent Python/魔法函数" />
     <SUITE FILE_PATH="coverage/keeplearning$enterandexit__1_.coverage" NAME="enterandexit (1) Coverage Results" MODIFIED="1543886372748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fluent Python/magic method" />
     <SUITE FILE_PATH="coverage/keeplearning$getattr.coverage" NAME="getattr Coverage Results" MODIFIED="1543886387383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/fluent Python/magic method" />
@@ -18,59 +18,42 @@
     <session id="898299686">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="15" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.open.time.5" value="2" />
-          <entry key="project.open.time.6" value="3" />
-          <entry key="project.open.time.7" value="2" />
+          <entry key="project.open.time.5" value="3" />
+          <entry key="project.open.time.6" value="4" />
+          <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitattributes" value="1" />
-          <entry key="py" value="43" />
+          <entry key="py" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="43" />
+          <entry key="Python" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="1443" />
+          <entry key="py" value="1610" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="1443" />
+          <entry key="Python" value="1610" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/系统设计与高并发/模式设计/创建型模式之原型模式.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="51" column="27" lean-forward="true" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
-              <folding>
-                <element signature="e#197#208#0" expanded="true" />
-                <marker date="1554650230219" expanded="true" signature="312:321" ph="..." />
-                <marker date="1554650230219" expanded="true" signature="501:510" ph="..." />
-                <marker date="1554650230219" expanded="true" signature="843:852" ph="..." />
-                <marker date="1554650230219" expanded="true" signature="915:924" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -100,6 +83,8 @@
         <option value="$PROJECT_DIR$/系统设计与高并发/模式设计/创建型模型之抽象工厂.py" />
         <option value="$PROJECT_DIR$/系统设计与高并发/模式设计/创建型模式之建造者模式.py" />
         <option value="$PROJECT_DIR$/系统设计与高并发/模式设计/创建型模式之原型模式.py" />
+        <option value="$PROJECT_DIR$/fluent Python/闭包测试/闭包.py" />
+        <option value="$PROJECT_DIR$/fluent Python/全局变量 局部变量/全局变量作用域.py" />
       </list>
     </option>
   </component>
@@ -186,6 +171,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -193,30 +179,23 @@
               <item name="keeplearning" type="b2602c69:ProjectViewProjectNode" />
               <item name="keeplearning" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="keeplearning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="keeplearning" type="462c0819:PsiDirectoryNode" />
-              <item name="系统设计与高并发" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="keeplearning" type="b2602c69:ProjectViewProjectNode" />
-              <item name="keeplearning" type="462c0819:PsiDirectoryNode" />
-              <item name="系统设计与高并发" type="462c0819:PsiDirectoryNode" />
-              <item name="模式设计" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\project\keeplearning\fluent Python" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -230,7 +209,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.创建型模式之原型模式">
+  <component name="RunManager" selected="Python.getattr">
     <configuration name="代理模式之代理保护简单版" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="keeplearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -245,6 +224,72 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/代理模式之代理保护简单版.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="结构型之适配器模式" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="keeplearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/系统设计与高并发/模式设计" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之适配器模式.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="结构型之外观模式" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="keeplearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/系统设计与高并发/模式设计" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之外观模式.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="结构型之适配器模式" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="keeplearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/系统设计与高并发/模式设计" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之适配器模式.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -311,6 +356,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/行为型模式之观察者模式.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="全局变量作用域" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="keeplearning" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/fluent Python/全局变量 局部变量" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fluent Python/全局变量 局部变量/全局变量作用域.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -429,7 +496,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="结构型之外观模式" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="闭包" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="keeplearning" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -437,34 +504,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/系统设计与高并发/模式设计" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/fluent Python/闭包测试" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之外观模式.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="结构型之适配器模式" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="keeplearning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/系统设计与高并发/模式设计" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之适配器模式.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fluent Python/闭包测试/闭包.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -487,28 +532,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之外观模式.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="结构型之适配器模式" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="keeplearning" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/系统设计与高并发/模式设计" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/系统设计与高并发/模式设计/结构型之适配器模式.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -542,11 +565,9 @@
     <list>
       <item itemvalue="Python.getattr" />
       <item itemvalue="Python.代理模式之代理保护简单版" />
-      <item itemvalue="Python.创建型模式之原型模式" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.创建型模式之原型模式" />
         <item itemvalue="Python.代理模式之代理保护简单版" />
         <item itemvalue="Python.getattr" />
       </list>
@@ -568,7 +589,7 @@
   <component name="ToolWindowManager">
     <frame x="-14" y="8" width="1274" height="656" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2236842" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.234375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -702,38 +723,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
           <caret line="9" selection-start-line="9" selection-end-line="138" />
-          <folding>
-            <element signature="e#198#219#0" expanded="true" />
-            <marker date="1554623438564" expanded="true" signature="587:596" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="714:723" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="776:785" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="1032:1041" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="1190:1199" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="1316:1325" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="1526:1535" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="1833:1842" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="2131:2140" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="2292:2301" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="2419:2428" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="2650:2659" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="3196:3205" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="3488:3497" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="3557:3566" ph="..." />
-            <marker date="1554623438564" expanded="true" signature="3731:3740" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/系统设计与高并发/模式设计/创建型模式之原型模式.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
-          <caret line="51" column="27" lean-forward="true" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+          <caret line="51" column="27" selection-start-line="51" selection-start-column="27" selection-end-line="51" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fluent Python/全局变量 局部变量/全局变量作用域.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-61">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fluent Python/闭包测试/闭包.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
-            <element signature="e#197#208#0" expanded="true" />
-            <marker date="1554650230219" expanded="true" signature="312:321" ph="..." />
-            <marker date="1554650230219" expanded="true" signature="501:510" ph="..." />
-            <marker date="1554650230219" expanded="true" signature="843:852" ph="..." />
-            <marker date="1554650230219" expanded="true" signature="915:924" ph="..." />
+            <marker date="1554912747849" expanded="true" signature="201:206" ph="..." />
           </folding>
         </state>
       </provider>
