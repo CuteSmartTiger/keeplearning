@@ -35,4 +35,4 @@ def quick_sort_3partition(sorting, left, right):
 
 unsort_list = [3, 1, 5, 7, 2, 4, 9, 6, 10, 8]
 quick_sort_3partition(unsort_list, 0, len(unsort_list) - 1)
-print unsort_list
+print(unsort_list)
