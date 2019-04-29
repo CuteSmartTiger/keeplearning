@@ -9,7 +9,6 @@
 from __future__ import print_function
 
 
-# 此方法应该为简单排序，而不是插入排序
 def insertion_sort(collection):
     """Pure implementation of the insertion sort algorithm in Python
     :param collection: some mutable ordered collection with heterogeneous
@@ -33,7 +32,7 @@ def insertion_sort(collection):
 
 if __name__ == '__main__':
     try:
-        raw_input          # Python 2
+        raw_input  # Python 2
     except NameError:
         raw_input = input  # Python 3
 
