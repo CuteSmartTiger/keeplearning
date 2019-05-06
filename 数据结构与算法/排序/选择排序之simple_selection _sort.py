@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/4/17 19:42
 # @Author  : liuhu
-# @File    : 交换排序之simple_selection_sort.py
+# @File    : 选择排序之simple_selection_sort.py
 # @Software: PyCharm
 # @github  :https://github.com/Max-Liuhu
 
