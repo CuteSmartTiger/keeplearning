@@ -36,4 +36,6 @@ systemctl disable raspi-config
 sudo sysv-rc-conf
 
 其他方式开启开机自启
-echo "sudo /etc/init.d/ssh restart" >> /etc/rc.local
+echo "sudo /etc/init.d/ssh start" >> /etc/rc.local
+
+echo "sudo /etc/init.d/lightdm start" >> /etc/rc.local
