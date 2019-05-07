@@ -29,10 +29,26 @@ systemctl disable raspi-config.service
 systemctl disable wifi-country.service
 systemctl disable  rc-local.service
 
+systemctl disable networking.service
+
+dphys-swapfile.service
+keyboard-setup.service
+rsyslog.service
+
+
 systemctl enable dhcpcd.service
 
+```SHELL
+cat >> jie_mian.sh  <<- EOF
+#!/usr/bin/env bash
 
-
+sudo apt update
+sudo apt install xorg -y
+sudo apt install lxde openbox -y
+sudo apt install pix-icons pix-plym-splash pixel-wallpaper -y
+sudo apt install raspberrypi-ui-mods -y
+EOF
+```
 
 
 分析
