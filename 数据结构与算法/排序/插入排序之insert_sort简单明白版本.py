@@ -15,6 +15,7 @@ def insert_sort(collections):
         # 在已排序序列中查找待插入的位置i
         # TODO 使用二分查找待插入位置
         while i > 0:
+            # 大于才会进行交换，相等则未发生交换，所以为稳定性排序
             if collections[i - 1] > sort_value:
                 collections[i] = collections[i - 1]
                 i -= 1
