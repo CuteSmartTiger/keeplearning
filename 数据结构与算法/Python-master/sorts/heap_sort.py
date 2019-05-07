@@ -53,9 +53,10 @@ def heap_sort(unsorted):
         heapify(unsorted, 0, i)
     return unsorted
 
+
 if __name__ == '__main__':
     try:
-        raw_input          # Python 2
+        raw_input  # Python 2
     except NameError:
         raw_input = input  # Python 3
 
