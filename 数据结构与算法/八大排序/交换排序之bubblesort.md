@@ -6,7 +6,7 @@
 - 代码：
   ```Python
   def bubble_sort(target_list):
-      '''基于Python的bubble sort'''
+      '''冒泡排序'''
       for i in range(len(target_list) - 1):
           flag = False  # 标记此趟比较是否发生交换
           for j in range(len(target_list) - i - 1):
@@ -29,7 +29,7 @@
   import "math/rand"
   import "time"
 
-  
+
   //  基于go语言的冒泡排序
   func main() {
   	//设置种子， 只需一次
