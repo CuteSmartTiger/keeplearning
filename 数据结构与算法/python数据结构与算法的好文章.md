@@ -7,3 +7,7 @@
 
 
 - [Python实现十大经典排序算法](https://cloud.tencent.com/developer/article/1108770)
+
+
+
+- [七大查找算法（Python）](https://www.cnblogs.com/lsqin/p/9342929.html)
