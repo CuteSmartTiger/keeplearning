@@ -20,3 +20,7 @@ def bubble_sort(collection):
         if not swapped:
             break
     return collection
+
+
+print bubble_sort([3, 1, 5, 7, 2, 4, 9, -6, 10, 8])
+print bubble_sort([])
