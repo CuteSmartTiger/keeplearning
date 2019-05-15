@@ -556,18 +556,24 @@
 
       ```
 
-[返回目录](#content)
+[返回目录：修饰器模式非常重要](#content)
+
 
 <h5 id='decorator'>2.2 修饰器模型</h>
 
+  - 用一句话解释装饰器模式：
+    -  修饰器模式能够以透明的方式（不影响其他对象）动态地将功能添加到一个对象中
+
   - 遵守的设计原则：
+
+
   - 对一个对象添加额外的功能的方法有：
     - 直接将功能添加到对象所属的类
     - 组合:组合优于继承
     - 继承
     - 修饰器
 
-  - 使用的场景：缓存，性能测试，权限认证
+  - 使用的场景：缓存，性能测试，权限认证，事务处理, 插入日志
   - 主要设计思路：
   - 代码示例：
     - 缓存
@@ -636,6 +642,22 @@
         # name: fibonacci, doc: 返回斐波那契数列的第n个数, executing: fibonacci(100), time:0.4526535
         ```
     - 性能测试
+     ```python
+         def timethis(func):
+            @wraps(func)
+            def wrapper(*args, **kwargs):
+                start = time.time()
+                r = func(*args, **kwargs)
+                end = time.time()
+                print('{}.{} : {}'.format(func.__module__, func.__name__, end - start))
+                return r
+            return wrapper
+
+        @timethis
+        def countdown(n):
+            while n > 0:
+                n -= 1
+     ```
     - 权限验证
 
 [返回目录](#content)
