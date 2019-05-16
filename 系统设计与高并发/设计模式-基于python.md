@@ -67,6 +67,7 @@
     - 智能（引用）代理：通过添加帮助信息（比如，引用计数）来扩展一个对象的行为时，可以使用智能（引用）代理
 
 <h5 id='motion'></h>
+
 [第三章 行为型模式](#motion)
 ----
 
@@ -85,81 +86,65 @@
 
 <h5 id='factory'>1.1.1 工厂模式、抽象工厂、单例模式</h>
 
-  - 使用场景：
-  - 设计思路：
+  - 工厂方法模式：
+  一个抽象产品类，可以派生出多个具体产品类。
+  一个抽象工厂类，可以派生出多个具体工厂类。
+  每个具体工厂类只能创建一个具体产品类的实例。
+  - 抽象工厂模式：
+  多个抽象产品类，每个抽象产品类可以派生出多个具体产品类。
+  一个抽象工厂类，可以派生出多个具体工厂类。
+  每个具体工厂类可以创建多个具体产品类的实例。
+  - 区别：
+  工厂方法模式只有一个抽象产品类，而抽象工厂模式有多个。
+  工厂方法模式的具体工厂类只能创建一个具体产品类的实例，而抽象工厂模式可以创建多个。
+
+  - [工厂方法]()
+  - 使用场景：简化对象的创建
+  - 一句话说明工厂方法：它是一个方法，对不同的输入参数返回不同的对象
+  - 设计思路：执行单个函数，传入一个参数（提供信息表明我们想要什么），但并不要求知道任何关于对象如何实现以及对象来自哪里的细节
   - 示例代码：
-    - 工厂方法
       ```python
-        import xml.etree.ElementTree as etree
-        import json
-
-
-        class JSONConnector:
+      class ZipOperate(object):
           def __init__(self, filepath):
-              self.data = dict()
-              with open(filepath, mode='r', encoding='utf-8') as f:
-                  self.data = json.load(f)
+              self.path = filepath
 
-          @property
-          def parsed_data(self):
-              return self.data
+          def upzip(self):
+              print '解压 {} 文件'.format(self.path)
 
 
-        class XMLConnector:
+      class PdfOperate(object):
           def __init__(self, filepath):
-              self.tree = etree.parse(filepath)
+              self.path = filepath
 
-          @property
-          def parsed_data(self):
-              return self.tree
+          def read_pdf(self):
+              print '读取 {} 文件'.format(self.path)
 
 
-        def connection_factory(filepath):
-          if filepath.endswith('json'):
-              connector = JSONConnector
-          elif filepath.endswith('xml'):
-              connector = XMLConnector
+      class ExcelOperate(object):
+          def __init__(self, filepath):
+              self.path = filepath
+
+          def input_info(self):
+              print '导入 {} 文件'.format(self.path)
+
+
+      def connect_factory(filepath):
+        '''工厂方法'''
+          if filepath.endswith('.zip'):
+              connector = ZipOperate
+          elif filepath.endswith('.pdf'):
+              connector = PdfOperate
+          elif filepath.endswith('.xlxs'):
+              connector = ExcelOperate
           else:
               raise ValueError('Cannot connect to {}'.format(filepath))
           return connector(filepath)
 
-
-        def connect_to(filepath):
-          factory = None
-          try:
-              factory = connection_factory(filepath)
-          except ValueError as ve:
-              print(ve)
-          return factory
-
-
-        def main():
-          sqlite_factory = connect_to('data/person.sq3')
-          print('=====================')
-          xml_factory = connect_to('data/person.xml')
-          xml_data = xml_factory.parsed_data
-          liars = xml_data.findall(".//{}[{}='{}']".format('person',
-                                                           'lastName', 'Liar'))
-          print('found: {} persons'.format(len(liars)))
-          for liar in liars:
-              print('first name: {}'.format(liar.find('firstName').text))
-              print('last name: {}'.format(liar.find('lastName').text))
-              [print('phone number ({})'.format(p.attrib['type']), p.text) for p in liar.find('phoneNumbers')]
-          print('==================')
-          json_factory = connect_to('data/donut.json')
-          json_data = json_factory.parsed_data
-          print('found: {} donuts'.format(len(json_data)))
-
-          for donut in json_data:
-              print('name: {}'.format(donut['name']))
-              print('price: ${}'.format(donut['ppu']))
-              [print('topping: {} {}'.format(t['id'], t['type'])) for t in donut['topping']]
-
-
-        if __name__ == '__main__':
-          main()
       ```
-    - 抽象工厂
+    - [抽象工厂]()
+    - 使用场景：简化对象的创建
+    - 一句话说明抽象工厂：一个抽象工厂是（逻辑上的）一组工厂方法，其中的每个工厂方法负责产生不同种类的对象
+    - 设计思路：执行单个函数，传入一个参数（提供信息表明我们想要什么），但并不要求知道任何关于对象如何实现以及对象来自哪里的细节
       ```python
       class Frog:
           def __init__(self, name):
@@ -262,15 +247,44 @@
       ```
     - 单利模式
       ```python
+      # 通过类的__new__方法,用instance存储唯一的示例化对象：
+      class Singleton(object):
+          __instance = None
+
+          def __new__(cls, *args, **kwargs):
+              print 'new'
+              if not cls.__instance:
+                  # super参数代表从Singleton开始查找MRO下一个cls的属性或者方法
+                  cls.__instance = super(Singleton, cls).__new__(cls, *args, **kwargs)
+              return cls.__instance
 
 
+      # 通过装饰器缓存存储用来实例对象的类
+      def singleton(cls):
+
+          _instance = {}
+
+          @functools.wraps(cls)
+          def wrapper(*args, **kwargs):
+              if cls not in _instance:
+                  _instance[cls] = cls(*args, **kwargs)
+              return _instance[cls]
+
+          return wrapper
+
+      # 元类实现单例的原理是控制类的创建，不存在则创建并存储
+      class Singleton(type):
+          _instances = {}
+
+          def __call__(cls, *args, **kwargs):
+              if cls not in cls._instances:
+                  cls._instances[cls] = super(Singleton, cls).__call__(*args, **kwargs)
+              return cls._instances[cls]
 
 
-
-
-
+      class MyClass(object):
+          __metaclass__ = Singleton
       ```
-  - 三种模式的对比总结：
 
 
 <h5 id='Builder'>1.2 建造者模式</h>
