@@ -73,13 +73,13 @@ def main():
     df.data = 3
 
 
-    # df.data = 5
-    # print(df.observers)
-    # print('==========================')
-    # bf = BinaryFormatter()
-    # df.add(bf)
-    # df.data = 21
-    # print(df)
+    df.data = 5
+    print(df.observers)
+    print('==========================')
+    bf = BinaryFormatter()
+    df.add(bf)
+    df.data = 21
+    print(df)
     # print('==========================')
     # df.remove(hf)
     # df.data = 40
