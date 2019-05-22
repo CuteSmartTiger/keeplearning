@@ -64,22 +64,22 @@ class BinaryFormatter:
 
 def main():
     df = DefaultFormatter('test1')
-    print(df)
-    print('==========================')
-    hf = HexFormatter()
-    df.add(hf)
-    hf2 = HexFormatter()
-    df.add(hf2)
-    df.data = 3
+    # print(df)
+    # print('==========================')
+    # hf = HexFormatter()
+    # df.add(hf)
+    # hf2 = HexFormatter()
+    # df.add(hf2)
+    # df.data = 3
 
 
-    df.data = 5
-    print(df.observers)
-    print('==========================')
+    # df.data = 5
+    # print(df.observers)
+    # print('==========================')
     bf = BinaryFormatter()
     df.add(bf)
     df.data = 21
-    print(df)
+    # print(df)
     # print('==========================')
     # df.remove(hf)
     # df.data = 40
