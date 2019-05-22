@@ -5,6 +5,8 @@
 # @File    : 数据结构之单向循环链表.py
 # @Software: PyCharm
 # @github  :https://github.com/Max-Liuhu
+
+
 class Node(object):
     def __init__(self, value):
         # 元素域
