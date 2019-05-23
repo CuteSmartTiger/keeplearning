@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/5/21 23:26
 # @Author  : liuhu
-# @Site    : 
+# @Site    :
 # @File    : 观察者模式的优化.py
 # @Software: PyCharm
 # @github  :https://github.com/Max-Liuhu
 
 # 1. 订阅者学生，注册自己感兴趣的事件，事件列表中有则关注，没有则添加，也可以取消自己感兴趣的事件
-
+# 2. 被观察者老师。老师发布事件
 
 class Share(object):
     event_dict = {}
