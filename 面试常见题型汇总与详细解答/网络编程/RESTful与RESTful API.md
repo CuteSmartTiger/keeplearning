@@ -1,0 +1,22 @@
+- RESTful
+  - 前后端分离意义及方式
+  - 什么是RESTful   怎么设计RESTfu
+    - 表现层状态转移 其中表现层指资源的表现形式，图片  文本；
+    - 资源(Resource) 使用URI指向的一个实体
+    - 一种以资源为中心的web软件架构风格
+  - 如何理解资源
+
+- RESTful API
+  - 三部分组成
+    - HTTP方法GET、DELETE、POST和PUT操作资源
+    - json
+    - RESTful API插件
+- 如何设计RESTful API
+    - 使用名字而不是动词，名词使用复数而不是单数
+    - 同一资源可以有一组操作
+      - GET   http://[hostname]/api/users  检索用户列表
+      - GET   http://[hostname]/api/users/[id]  查询单个用户
+      - POST  http://[hostname]/api/users     创建用户
+      - PUT   http://[hostname]/api/users/[id]  修改用户
+      - DELETE  http://[hostname]/api/users/[id]  删除用户
+    - 定义返回状态码
