@@ -44,7 +44,7 @@ def josephus(namelist, num):
     while simqueue.size() > 1:
         for i in range(num):
             simqueue.enqueue(simqueue.dequeue())
-        print simqueue.dequeue()
+        print(simqueue.dequeue())
     return simqueue.dequeue()
 
 

@@ -12,6 +12,7 @@ from urllib.parse import urlparse
 # 虽然使用了非阻塞IO，但是内部的循环
 # 依然占用很多时间，并没有提高并发
 
+
 def get_url(url):
     # 通过socket请求html
     url = urlparse(url)

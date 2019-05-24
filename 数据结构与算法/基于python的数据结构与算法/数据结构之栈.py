@@ -38,4 +38,4 @@ s=Stack(5)
 for i in range(6):
     s.push(i)
 s.pop()
-print s.isempty()
+print(s.isempty())

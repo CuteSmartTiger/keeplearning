@@ -5,8 +5,8 @@ def callback(sleep_times,loop):
     print('sleep {0} suceess {1}'.format(sleep_times,loop.time()))
 
 
-def stoploop(loop):
-    loop.stop()
+# def stoploop(loop):
+#     loop.stop()
 
 
 if __name__ == '__main__':
