@@ -521,25 +521,6 @@ groupadd/groupmod
 
 
 
-- [HTTP协议](https://www.cnblogs.com/ranyonsue/p/5984001.html)
-  - pip install httpie  
-  - curl
-  - HTTP协议有哪些部分组成  使用抓包工具去查看和理解
-    - HTTP请求
-      - 状态行
-      - 请求头
-      - 消息主体
-    - HTTP响应
-      - 状态行
-      - 响应头
-      - 响应正文
-    - HTTP响应状态码  五中类型
-  - 幂等性  GET
-  - 长连接
-    - 为什么需要长连接
-    - 如何区分短还是长连接
-      - 1. content-Length 携带报文长度
-      - 2. Transfer-Encoding:chunked
   - cookie与session的区别，识别用户
   - 前后端分离如何识别用户状态
   - 本节重点内容：
@@ -571,28 +552,6 @@ groupadd/groupmod
     - 路由  表单验证 权限认证 ORM 视图函数  模板渲染  序列化
     - redis   RESTful
 
-- RESTful
-  - 前后端分离意义及方式
-  - 什么是RESTful   怎么设计RESTfu
-    - 表现层状态转移 其中表现层指资源的表现形式，图片  文本；
-    - 资源(Resource) 使用URI指向的一个实体
-    - 一种以资源为中心的web软件架构风格
-  - 如何理解资源
-
-- RESTful API
-  - 三部分组成
-    - HTTP方法GET、DELETE、POST和PUT操作资源
-    - json
-    - RESTful API插件
-- 如何设计RESTful API
-    - 使用名字而不是动词，名词使用复数而不是单数
-    - 同一资源可以有一组操作
-      - GET   http://[hostname]/api/users  检索用户列表
-      - GET   http://[hostname]/api/users/[id]  查询单个用户
-      - POST  http://[hostname]/api/users     创建用户
-      - PUT   http://[hostname]/api/users/[id]  修改用户
-      - DELETE  http://[hostname]/api/users/[id]  删除用户
-    - 定义返回状态码
 
 
 - cookie
@@ -624,6 +583,7 @@ groupadd/groupmod
     - 一致性(Consistency)：事务开始和结束之后数据完整性没有被破坏
     - 隔离性(Isolation)：允许多个事务同时对数据库修改和读写
     - 持久性(Durability)：事务结束后，修改时永久的不会丢失
+
   - 如果不对事务进行并发控制，可能会产生四种异常情况
     - 幻读(phantom read)：一个事务第二次查出第一次没有的结果
     - 非重复读(nonrepeatable read):一个事务重复读两次得到不同的结果
@@ -725,7 +685,7 @@ innoDB支持事物安全与外键
 
 - MySQL高可用
   1. 解释GTID
-  2. 数据库之间的复制： 
+  2. 数据库之间的复制：
     - 异步复制
     - 半同步复制
     - 同步复制

@@ -15,6 +15,8 @@ print sqt(10)
 print sqt(6)
 
 
+li  = list()
+
 def mySqrt(x):
     """
     :type x: int
