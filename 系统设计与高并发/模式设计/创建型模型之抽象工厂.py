@@ -7,6 +7,7 @@
 # @Software: PyCharm
 # @github  :https://github.com/Max-Liuhu
 
+
 class Frog:
     def __init__(self, name):
         self.name = name

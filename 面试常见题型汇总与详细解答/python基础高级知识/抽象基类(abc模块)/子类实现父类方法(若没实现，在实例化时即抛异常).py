@@ -10,25 +10,28 @@
 import abc
 from collections.abc import *
 
+
+# 通过元类继承保证子类必须实现父类方法
 class Cache(metaclass=abc.ABCMeta):
     """通过abc模块限定子类必须实现父类方法"""
 
     @abc.abstractmethod
     def get(self, key):
-        pass
+        print('abc get  {0}'.format(key))
 
     @abc.abstractmethod
     def set(self, key, value):
-        pass
+        print('abc set method')
 
 
 class Redis(Cache):
     def get(self, key):
-        pass
+        # super(Redis, self).get(key)
+        super().get(key)
 
     def set(self, key, value):
         pass
 
 
 redis_cache = Redis()
-# redis_cache.get('name')
+redis_cache.get('name')

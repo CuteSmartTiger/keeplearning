@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time    : 2019/5/24 20:59
+# @Time    : 2019/5/26 10:47
 # @Author  : liuhu
-# @File    : 利用抽象基类编写一个代理模式案例.py
+# @Site    : 
+# @File    : 自己定义理解一个建造者模式.py
 # @Software: PyCharm
 # @github  :https://github.com/Max-Liuhu

@@ -22,7 +22,9 @@ class Tree:
         obj = cls.pool.get(tree_type, None)
         if not obj:
             print('{0}不存在'.format(tree_type))
-            obj = object.__new__(cls)
+            # obj = object.__new__(cls)
+            # cls.pool[tree_type] = obj
+            obj = super(Tree, cls).__new__(cls)
             cls.pool[tree_type] = obj
             print(cls.pool)
             obj.tree_type = tree_type
