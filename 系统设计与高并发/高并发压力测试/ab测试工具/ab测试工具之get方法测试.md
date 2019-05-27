@@ -18,7 +18,7 @@ Requests per second: 91.50 [#/sec] (mean) //平均(mean)每秒完成的请求数
 
 ab -n 100 -c 100 http://192.168.6.96/v2/users//test
 
-
+ab -n 100 -c 100 http://192.168.6.95/
 
 ab -n 100 -c 100 http://192.168.6.92/userportal/api/list_vms
 
