@@ -6,8 +6,8 @@
 # @Software: PyCharm
 # @github  :https://github.com/Max-Liuhu
 
-# job_list = ['lopen', 'read', 'close']
-job_list = [ 'read']
+job_list = ['lopen', 'read', 'close']
+# job_list = [ 'read']
 # job_list = ['lopen']
 
 
@@ -22,6 +22,8 @@ class Base(object):
             method(key)
         else:
             print('{0}'.format(key))
+            if not self.next:  # 责任链终点
+                return
             if hasattr(self.next, 'deal'):
                 print('{0}点有deal 方法'.format(self.next))
                 self.next.deal(key)

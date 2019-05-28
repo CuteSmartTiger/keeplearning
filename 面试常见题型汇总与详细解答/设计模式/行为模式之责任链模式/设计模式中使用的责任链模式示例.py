@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/5/25 15:06
 # @Author  : liuhu
-# @Site    : 
+# @Site    :
 # @File    : 设计模式中使用的责任链模式示例.py
 # @Software: PyCharm
 # @github  :https://github.com/Max-Liuhu
