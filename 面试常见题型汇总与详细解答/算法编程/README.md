@@ -1,1 +1,11 @@
-- [台阶问题](https://github.com/Max-Liuhu/interview_python#2-%E5%8F%98%E6%80%81%E5%8F%B0%E9%98%B6%E9%97%AE%E9%A2%98)
+剑指offer归纳重点考点
+
+
+二分查找
+快速排序
+归并排序
+
+
+少数公司会考：
+动态规划
+贪婪算法
