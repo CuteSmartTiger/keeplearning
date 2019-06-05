@@ -16,8 +16,8 @@ class redisOperation(object):
             host=host, port=port, db=db)
         print("Successfully connect to Redis Server.")
 
-    def setData(self, key, value):
-        self.database.set(key, pickle.dumps(value))
+    def setData(self, key, value, expire):
+        self.database.set(key, pickle.dumps(value), expire)
 
     def getData(self, key):
         data = self.database.get(key)
@@ -33,7 +33,9 @@ class redisOperation(object):
             rawKeys.append(key.decode())
         return rawKeys
 
-r=redisOperation(host='192.168.6.92', port=6379, db=2)
 
-# r.setData('username', [10,20,90,(30,10,29)])
+r = redisOperation(host='192.168.6.96', port=6379, db=2)
+
+# r.setData('username', [10,20,90,(30,10,29)],10)
+# r.setData('username', [10,20,90,(30,10,29)],10)
 print r.getData('username')

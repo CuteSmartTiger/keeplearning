@@ -7,7 +7,7 @@
 # @github  :https://github.com/Max-Liuhu
 import redis
 
-redisClient = redis.StrictRedis(host='192.168.6.93', port=6379, db=0)
+redisClient = redis.StrictRedis(host='192.168.6.93', port=6379, db=2)
 # res = redisClient.set('test_redis', 'Hello Python')
 res1 = redisClient.set('count', 0)
 # print res1
