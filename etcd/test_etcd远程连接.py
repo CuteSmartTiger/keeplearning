@@ -6,6 +6,6 @@
 # @Software: PyCharm
 # @github  :https://github.com/Max-Liuhu
 import etcd3
-host ='192.168.6.96'
-et = etcd3.client(host='192.168.6.96', port='2379')
+host ='192.168.6.95'
+et = etcd3.client(host='192.168.6.95', port='2379')
 print et
