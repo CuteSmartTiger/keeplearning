@@ -1,7 +1,7 @@
 
 
 生产密码并将密码放置到GitHub的ssh设置中
-ssh-keygen -t rsa -C max_liuhu@163.com
+ssh-keygen -t rsa -C 8978979797@163.com
 /c/Users/liuhu/.ssh/id_rsa.pub
 
 
