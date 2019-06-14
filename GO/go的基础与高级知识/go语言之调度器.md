@@ -1,0 +1,6 @@
+- I/O,select
+- channel
+- 等待锁
+- 函数调用
+- runtime.Gosched()
+- 只是参考，不能保证切换 不能保证在其他地方不切换
