@@ -154,6 +154,42 @@ print(op.index(7))
 print(op.insert(9, 9))
 print(op.search(9))
 print(op.index(9))
+
+
 # print(op.end_add(9))
 # print(op.search(9))
 # # print(op.remove(6))
+class Solution(object):
+    def sortList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        pass
+
+    def partition(self, start, end):
+        # 以第一个非头结点的节点为基准
+        pivot = start.next.val
+        curr = start.next
+        prev = start.next
+        while curr != end.next:
+            if curr.val > pivot:
+                pass
+            elif curr.val < pivot:
+
+                pass
+            else:
+                curr = curr.next
+
+    def qiuck_sort(self, start, end):
+        """
+        :param start: the head pointer
+        :param end: the end pointer
+        :return:
+        """
+        if start.next != end:  # 若相等则代表只剩余一个元素，是递归出口的条件
+            # 与基准比较后，prev指向基准左边排序后最后一个插入的节点
+            # post则指向基准右侧下一个递归需要排序的起始节点，指向比基准大的第一个节点
+            prev, post = self.partition(start, end)
+            self.qiuck_sort(start, prev)
+            self.qiuck_sort(post, end)
