@@ -1,0 +1,23 @@
+<style type="text/css">
+    p {
+        text-indent: 2em;
+    }
+
+    .t_4e {
+        text-indent: 4em;
+    }
+</style>
+<h4>Hi {{operator | ad2name}}：</h4>
+<p>{{deploy.system}} {{deploy.version}} 申请上线，等待您的操作：<a href="{{link}}">{{link}}</a></p>
+<p>详细信息如下：</p><br>
+<p><strong>1.申请上线版本： </strong>{{deploy.system}} {{deploy.version}}</p>
+<p><strong>2.上线内容: </strong>{{deploy.content}}</p>
+<p><strong>3.目标上线时间：</strong>{{deploy.plan_time | utc2local}}</p>
+<p><strong>4.申请人：</strong>{{deploy.creator | ad2name}}  <strong>审批人：</strong>{{deploy.approver| ad2name}}</p>
+<p><strong>5.相关其他干系人：</strong></p>
+<p class="t_4e">开发 - {{deploy.dev | ad2name}}</p>
+<p class="t_4e">运维 - {{deploy.ops | ad2name}}</p>
+<p class="t_4e">测试 - {{deploy.qa | ad2name}}</p>
+<br>
+<br>
+<p>本邮件由Dalmore系统自动发出， 请勿直接回复该邮件。 任何意见或者建议，请联系工程效率团队。</p>
