@@ -276,8 +276,6 @@
                     group.send(value)
                 group.send(None)
                 print(results)
-
-
             main(data)
         ```
 

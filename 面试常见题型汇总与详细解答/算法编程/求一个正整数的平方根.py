@@ -10,12 +10,11 @@ def sqt(n):
     return n ** 0.5
 
 
-print sqt(4)
-print sqt(10)
-print sqt(6)
+# print sqt(4)
+# print sqt(10)
+# print sqt(6)
 
 
-li  = list()
 
 def mySqrt(x):
     """
@@ -37,7 +36,7 @@ def mySqrt(x):
     return mid  # 向
 
 
-print mySqrt(10)
+# print(mySqrt(10))
 
 
 # 针对小数位数进行求解  最多9位有效数字
@@ -50,7 +49,8 @@ def float_sqt(n, target):
     while True:
         place *= RADIX
         count += 1
-        if count == 11:
+        if count == 5:
+            print(count)
             break
         while True:
             if base * base == target:
@@ -60,19 +60,29 @@ def float_sqt(n, target):
             else:
                 base -= place * 10
                 break
-        print place
+        # print(place)
     return base
 
 
-print float_sqt(3, 10)
+print(float_sqt(3, 10))
 
 import math
 
-print math.sqrt(10)
+# print(math.sqrt(10))
 
 def self_sqr(target):
      n= mySqrt(target)
+     print(n)
      return float_sqt(n,target)
 
 
-print self_sqr(10)
+# print self_sqr(10)
+
+
+def my_sqrt(n):
+    x= n
+    while x**2 > n:
+        x = (x + n/x)/2
+    return x
+
+print(my_sqrt(10))

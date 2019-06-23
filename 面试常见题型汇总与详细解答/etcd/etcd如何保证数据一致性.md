@@ -6,7 +6,7 @@
 
 
 #### 数据提交的过程
-- 第一阶段：eader扮演的是分布式事务中的协调者，每次有数据更新的时候产生二阶段提交（two-phase commit）。在leader收到数据操作的请求，先不着急更新本地数据（数据是持久化在磁盘上的），而是生成对应的log，然后把生成log的请求广播给所有的follower。
+- 第一阶段：leader扮演的是分布式事务中的协调者，每次有数据更新的时候产生二阶段提交（two-phase commit）。在leader收到数据操作的请求，先不着急更新本地数据（数据是持久化在磁盘上的），而是生成对应的log，然后把生成log的请求广播给所有的follower。
 每个follower在收到请求之后有两种选择：一种是听从leader的命令，也写入log，然后返回success回去；另一种情况，在某些条件不满足的情况下，follower认为不应该听从leader的命令，返回false；然后回到leader，此时如果超过半数的follower都成功写了log，那么leader开始第二阶段的提交
 - 第二阶段：正式写入数据，然后同样广播给follower，follower也根据自身情况选择写入或者不写入并返回结果给leader。继续上面的例子，leader先写自己的数据，然后告诉follower也开始持久化数据，这两阶段中如果任意一个都有超过半数的follower返回false或者根本没有返回，那么这个分布式事务是不成功的。
 
