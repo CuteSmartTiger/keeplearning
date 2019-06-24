@@ -1,0 +1,5 @@
+*.pyc
+.idea
+node_modules
+__pycache__
+config/*

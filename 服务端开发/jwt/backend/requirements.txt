@@ -1,0 +1,14 @@
+gunicorn==19.7.1
+urllib3==1.22
+httplib2==0.11.0
+requests==2.18.4 
+Jinja2==2.10
+PyMySQL==0.7.11
+pyldap==2.4.37
+PyJWT==1.5.2
+AoikLiveReload==0.1.0
+peewee==2.8.5
+marshmallow==2.13.6
+sanic-crud==0.2.4
+Sanic-Cors==0.6.0.0
+sanic==0.6.0
