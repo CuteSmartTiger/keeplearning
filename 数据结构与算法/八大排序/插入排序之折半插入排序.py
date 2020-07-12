@@ -29,7 +29,8 @@ def binary_insert_sort(nums):
         print(left,right)
         for j in range(i, right+1, -1):
             # 交换,并由此处可见折半插入排序为稳定性排序
-            nums[j], nums[j - 1] = nums[j - 1], nums[j]
+            nums[j]= nums[j - 1]
+            # nums[j], nums[j - 1] = nums[j - 1], nums[j]
 
         nums[right+1] = target
         print(nums)
